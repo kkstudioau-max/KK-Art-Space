@@ -1,44 +1,12 @@
-img.image-viewer-trigger {
-  cursor: zoom-in;
-}
-
-img.image-viewer-trigger:focus-visible {
-  outline: 3px solid #716d61;
-  outline-offset: 4px;
-}
-
-.image-viewer {
-  box-sizing: border-box;
-  position: fixed;
-  inset: 0;
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  max-width: none;
-  max-height: none;
-  margin: 0;
-  padding: 4rem 1rem 1rem;
-  border: 0;
-  background: rgba(20, 20, 20, .96);
-  color: white;
-}
-
-.image-viewer::backdrop {
-  background: rgba(20, 20, 20, .96);
-}
-
-.image-viewer[open] {
-  display: grid;
-  place-items: center;
-}
-
 .image-viewer img {
   display: block;
-  max-width: 100%;
-  max-height: calc(100vh - 5rem);
-  max-height: calc(100dvh - 5rem);
   width: auto;
   height: auto;
+  min-width: 0;
+  min-height: 0;
+  max-width: 80vw;
+  max-height: 75vh;
+  max-height: 75dvh;
   object-fit: contain;
 }
 
@@ -46,10 +14,16 @@ img.image-viewer-trigger:focus-visible {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  padding: .5rem .8rem;
+  display: grid;
+  width: 3.5rem;
+  height: 3.5rem;
+  place-items: center;
   border: 1px solid white;
-  background: transparent;
+  border-radius: 50%;
+  background: rgba(20, 20, 20, .8);
   color: white;
   font: inherit;
+  font-size: 2.5rem;
+  line-height: 1;
   cursor: pointer;
 }
