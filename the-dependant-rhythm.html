@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="KK Art Space - original mixed-media artworks exploring texture, fragility, resilience and the quieter layers of human experience.">
-  <title>KK Art Space | Original Mixed-Media Art</title>
+  <meta name="description" content="The Dependant Rhythm, an original mixed-media artwork by KK Art Space.">
+  <title>The Dependant Rhythm | KK Art Space</title>
   <style>
     :root {
       color-scheme: light;
@@ -12,7 +12,6 @@
       --ink: #252522;
       --muted: #6d6b65;
       --line: #dedcd5;
-      --accent: #716d61;
     }
 
     * { box-sizing: border-box; }
@@ -25,8 +24,6 @@
       line-height: 1.6;
     }
 
-    a { color: inherit; }
-
     header, main, footer {
       width: min(1100px, calc(100% - 40px));
       margin: 0 auto;
@@ -34,4 +31,121 @@
 
     header {
       display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
 
+    a { color: inherit; }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a { color: var(--muted); text-decoration: none; }
+
+    .back-link {
+      display: inline-block;
+      margin: 30px 0 18px;
+      color: var(--muted);
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .details { color: var(--muted); }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      max-height: 75vh;
+      margin: 28px 0;
+      object-fit: contain;
+      background: #eeece6;
+    }
+
+    .description {
+      max-width: 760px;
+      margin: 32px 0 48px;
+    }
+
+    .description p { color: var(--muted); }
+
+    .additional-images {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 24px 0 64px;
+    }
+
+    .additional-images img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      background: #eeece6;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 650px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .additional-images { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home">KK Art Space</a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall and Floor Art</a>
+      <a href="sculptures-vessels.html">Sculptures and Vessels</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="wall-floor-art.html">← Back to Wall and Floor Art</a>
+    <h1>The Dependant Rhythm</h1>
+    <div class="details">900 × 600 mm · Mixed media on board · Framed</div>
+
+    <img class="main-image" src="The_Dependant_Rhythm_1.jpg" alt="The Dependant Rhythm, full view">
+
+    <section class="description" aria-label="Artwork description">
+      <p>The Dependant Rhythm explores the tension between repetition and disruption — the ways we move through life in patterns that feel familiar, even as they shift, fracture and change.</p>
+      <p>Built through layers of texture, sand, plaster, washes and staining, the work combines muted blue, charcoal and earthy neutrals with dark descending marks and weathered surfaces. Earlier layers remain visible beneath the final finish, creating a sense of history, erosion and quiet persistence.</p>
+      <p>The central textured band acts almost like a pulse through the piece — holding together areas that feel at once connected, interrupted and dependent on one another.</p>
+    </section>
+
+    <h2>Additional views</h2>
+    <div class="additional-images" aria-label="Additional views of The Dependant Rhythm">
+      <img src="The_Dependant_Rhythm_2.jpg" alt="Close-up of The Dependant Rhythm">
+      <img src="The_Dependant_Rhythm_3.jpg" alt="Additional view of The Dependant Rhythm">
+    </div>
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+</body>
+</html>
