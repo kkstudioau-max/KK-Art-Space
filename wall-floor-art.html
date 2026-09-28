@@ -228,6 +228,20 @@
   padding: 40px 0 72px;
   border-top: 1px solid var(--line);
 }
+    .artwork-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.artwork-link:hover h3 {
+  text-decoration: underline;
+}
+
+.artwork-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
   </style>
 </head>
 <body>
@@ -249,20 +263,20 @@
       </div>
 
       <div class="gallery">
-        <article class="artwork">
-          <img class="artwork-image" src="The_Stains_of_Life_1.jpg" alt="Main Image The Stains of Life, full view">
-          <img class="artwork-image" src="The_Stains_of_Life_2.jpg" alt="Close-up The Stains of Life">
-          <img class="artwork-image" src="The_Stains_of_Life_3.jpg" alt="Close-up The Stains of Life">
-          <img class="artwork-image" src="The_Stains_of_Life_4.jpg" alt="Close-up The Stains of Life">
-          <h3>The Stains of Life</h3>
-          <p>900 X 600 mm | Mixed media on board | Framed
-The Stains of Life explores the marks experience leaves behind — some visible, some subtle, some becoming so embedded they form part of who we are.
-Repeated hand-drawn grooves travel across the surface, interrupted by worn markings, shifting direction and areas of accumulated colour. Layers of smoky blue-grey, charcoal, soft stone and earthy brown settle into the texture, creating a surface that changes with light and perspective.
-Rather than concealing imperfection, the work allows those traces to remain visible. The stains, scars and irregularities become part of the whole — evidence of what has been carried, endured and absorbed over time.
-Original artwork | 1/1 | 2.
-</p>
-        </article>
+        .artwork-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
 
+.artwork-link:hover h3 {
+  text-decoration: underline;
+}
+
+.artwork-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
         <article class="Gallery">
           <img class="artwork-image" src="The_Dependant_Rhythm_1.jpg" alt="Main image for The Dependant Rhythm">
           <img class="artwork-image" src="The_Dependant_Rhythm_2.jpg" alt="Close up of The Dependant Rhythm">
