@@ -229,6 +229,7 @@
   border-top: 1px solid var(--line);
 }
   </style>
+  <link rel="stylesheet" href="image-viewer.css">
 </head>
 <body>
   <header>
@@ -249,15 +250,15 @@
 
     <section class="featured-carousel" aria-label="Featured artworks">
   <figure class="featured-slide is-active">
-    <img src="The_Stains_of_Life_1.jpg" alt="The Stains of Life, full view">
+    <img class="image-viewer-trigger" src="The_Stains_of_Life_1.jpg" alt="The Stains of Life, full view">
     <figcaption>The Stains of Life</figcaption>
   </figure>
   <figure class="featured-slide">
-    <img src="The_Dependant_Rhythm_1.jpg" alt="The Dependant Rhythm, full view">
+    <img class="image-viewer-trigger" src="The_Dependant_Rhythm_1.jpg" alt="The Dependant Rhythm, full view">
     <figcaption>The Dependant Rhythm</figcaption>
   </figure>
   <figure class="featured-slide">
-    <img src="Remnant_1.jpg" alt="Remnant, full view">
+    <img class="image-viewer-trigger" src="Remnant_1.jpg" alt="Remnant, full view">
     <figcaption>Remnant</figcaption>
   </figure>
 
@@ -321,5 +322,6 @@
 
   startSlideshow();
 </script>
+  <script src="image-viewer.js"></script>
 </body>
 </html>
