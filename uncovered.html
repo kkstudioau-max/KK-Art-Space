@@ -115,6 +115,7 @@
       .additional-images { grid-template-columns: 1fr; }
     }
   </style>
+  <link rel="stylesheet" href="image-viewer.css">
 </head>
 <body>
   <header>
@@ -131,21 +132,22 @@
     <h1> Uncovered</h1>
     <div class="details">650 × 650 mm | Mixed media on board | Framed</div>
 
-    <img class="main-image" src="Uncovered-1.jpg" alt="Uncovered, full view">
-    <section class="description" aria-label="Artwork description">
-      <p> Uncovered explores what lies beneath the surface — the traces, histories and experiences that remain even when they are no longer immediately visible.
-Dense cellular forms emerge from a weathered landscape of layered greys, softened blues and fractured marks, gradually dissolving into quieter space. From a distance, the work shifts between complexity and stillness; up close, subtle impressions, imperfections and remnants reveal themselves.
-</p>Built through layers of mixed media, abrasion and pigment, Uncovered reflects the way time can obscure, alter and expose what has come before. Rather than concealing its irregularities, the work allows them to remain visible — evidence of what has been carried, changed and endured.
-    </section>
+    <img class="main-image image-viewer-trigger" src="Uncovered/Uncovered.jpg" alt="Uncovered, full view">
 
-    <h2>Additional views</h2>
+<section class="description" aria-label="Artwork description">
+  <p>Uncovered explores what lies beneath the surface — the traces, histories and experiences that remain even when they are no longer immediately visible.</p>
+  <p>Dense cellular forms emerge from a weathered landscape of layered greys, softened blues and fractured marks, gradually dissolving into quieter space. From a distance, the work shifts between complexity and stillness; up close, subtle impressions, imperfections and remnants reveal themselves.</p>
+  <p>Built through layers of mixed media, abrasion and pigment, Uncovered reflects the way time can obscure, alter and expose what has come before. Rather than concealing its irregularities, the work allows them to remain visible — evidence of what has been carried, changed and endured.</p>
+</section>
+
+<h2>Additional views</h2>
 <div class="additional-images" aria-label="Additional views of Uncovered">
-  <img src="Uncovered-2.jpg" alt="Detail view of Uncovered">
-  <img src="Uncovered-3.jpg" alt="Detail view of Uncovered">
-  <img src="Uncovered-4.jpg" alt="Detail view of Uncovered">
+  <img class="image-viewer-trigger" src="Uncovered/Uncovered-2.jpg" alt="Detail view of Uncovered">
+  <img class="image-viewer-trigger" src="Uncovered/Uncovered-3.jpg" alt="Detail view of Uncovered">
+  <img class="image-viewer-trigger" src="Uncovered/Uncovered-4.jpg" alt="Detail view of Uncovered">
 </div>
-  </main>
 
   <footer>© 2026 KK Art Space · Australia</footer>
+    <script src="image-viewer.js"></script>
 </body>
 </html>
