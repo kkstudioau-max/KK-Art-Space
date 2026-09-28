@@ -1,1 +1,26 @@
+img.image-viewer-trigger {
+  cursor: zoom-in;
+}
 
+img.image-viewer-trigger:focus-visible {
+  outline: 3px solid #716d61;
+  outline-offset: 4px;
+}
+
+.image-viewer {
+  box-sizing: border-box;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 4rem 1rem 1rem;
+  border: 0;
+  background: rgba(20, 20, 20, .96);
+  color: white;
+}
+
+.image-viewer::backdrop {
+  background: rgba(20, 20, 20, .96);
+}
