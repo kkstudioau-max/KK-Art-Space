@@ -314,46 +314,5 @@ Original mixed media artwork | 1/1 | 2026</p>
   </main>
 
   <footer>© 2026 KK Art Space · Australia</footer>
-<script>
-  const carousel = document.querySelector(".featured-carousel");
-  const slides = Array.from(carousel.querySelectorAll(".featured-slide"));
-  const pauseButton = carousel.querySelector(".carousel-toggle");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  let activeSlide = 0;
-  let isPlaying = !prefersReducedMotion;
-  let timer;
-
-  function showSlide(index) {
-    slides[activeSlide].classList.remove("is-active");
-    activeSlide = (index + slides.length) % slides.length;
-    slides[activeSlide].classList.add("is-active");
-  }
-
-  function startSlideshow() {
-    window.clearInterval(timer);
-    if (isPlaying) {
-      timer = window.setInterval(() => showSlide(activeSlide + 1), 5000);
-    }
-    pauseButton.textContent = isPlaying ? "Pause slideshow" : "Play slideshow";
-  }
-
-  carousel.querySelector(".carousel-previous").addEventListener("click", () => {
-    showSlide(activeSlide - 1);
-    startSlideshow();
-  });
-
-  carousel.querySelector(".carousel-next").addEventListener("click", () => {
-    showSlide(activeSlide + 1);
-    startSlideshow();
-  });
-
-  pauseButton.addEventListener("click", () => {
-    isPlaying = !isPlaying;
-    startSlideshow();
-  });
-
-  startSlideshow();
-</script>
 </body>
 </html>
