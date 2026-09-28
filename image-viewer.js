@@ -7,7 +7,7 @@ document.addEventListener("click", (event) => {
   // Let modified clicks keep their normal browser behavior.
   if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
 
-  if (link) event.preventDefault();
+  if (link) return;
 
   let viewer = document.querySelector(".image-viewer");
 
