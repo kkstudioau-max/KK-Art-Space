@@ -183,28 +183,94 @@
   object-fit: contain;
   background: #eeece6;
 }
+    .featured-carousel {
+  margin: 0 0 76px;
+}
+
+.featured-slide {
+  display: none;
+  margin: 0;
+}
+
+.featured-slide.is-active {
+  display: block;
+}
+
+.featured-slide img {
+  display: block;
+  width: 100%;
+  height: clamp(300px, 68vh, 700px);
+  object-fit: contain;
+  background: #eeece6;
+}
+
+.featured-slide figcaption {
+  padding: 10px 0;
+  text-align: center;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.carousel-controls button {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+}
+
+.category-section {
+  padding: 40px 0 72px;
+  border-top: 1px solid var(--line);
+}
   </style>
 </head>
 <body>
   <header>
     <a class="brand" href="#">KK Art Space</a>
     <nav aria-label="Main navigation">
-      <a href="#artworks">Gallery</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <a href="#wall-floor-art">Wall and Floor Art</a>
+  <a href="#sculptures-vessels">Sculptures and Vessels</a>
+  <a href="#contact">Contact</a>
+</nav>
   </header>
 
   <main>
-    <section class="intro">
+    <section class="intro" id="home">
       <div class="eyebrow">Original mixed-media artworks · Australia</div>
       <h1>Holding tension between fragility and resilience.</h1>
       <p>KK Art Spaceis a collection of original, tactile artworks explorig texture, imperfection, memory and the quieter layers of human experience.Each piece is created by hand and is one of a kind. Browse the gallery and get in touch to ask about a piece.</p>
     </section>
 
-    <section id="artworks" aria-labelledby="artworks-title">
+    <section class="featured-carousel" aria-label="Featured artworks">
+  <figure class="featured-slide is-active">
+    <img src="The_Stains_of_Life_1.jpg" alt="The Stains of Life, full view">
+    <figcaption>The Stains of Life</figcaption>
+  </figure>
+  <figure class="featured-slide">
+    <img src="The_Dependant_Rhythm_1.jpg" alt="The Dependant Rhythm, full view">
+    <figcaption>The Dependant Rhythm</figcaption>
+  </figure>
+  <figure class="featured-slide">
+    <img src="Remnant_1.jpg" alt="Remnant, full view">
+    <figcaption>Remnant</figcaption>
+  </figure>
+
+  <div class="carousel-controls">
+    <button class="carousel-previous" type="button">Previous</button>
+    <button class="carousel-toggle" type="button">Pause slideshow</button>
+    <button class="carousel-next" type="button">Next</button>
+  </div>
+</section>
+
+    <section id="wall-floor-art" aria-labelledby="artworks-title">
       <div class="section-heading">
-        <h2 id="artworks-title">Selected works</h2>
+        <h2 id="artworks-title">Wall and Floor Art</h2>
         <p>Original one-of-a-kind pieces · Please enquire for availability</p>
       </div>
 
@@ -271,6 +337,11 @@ Original mixed media artwork | 1/1 | 2026</p>
       </div>
     </section>
 
+    <section class="category-section" id="sculptures-vessels">
+  <div class="eyebrow">Three-dimensional works</div>
+  <h2>Sculptures and Vessels</h2>
+  <p>New sculptures and vessels will be added here.</p>
+</section>
     <section class="about" id="about">
       <div>
         <div class="eyebrow">A little about me</div>
@@ -284,5 +355,46 @@ Original mixed media artwork | 1/1 | 2026</p>
   </main>
 
   <footer>© 2026 KK Art Space · Australia</footer>
+<script>
+  const carousel = document.querySelector(".featured-carousel");
+  const slides = Array.from(carousel.querySelectorAll(".featured-slide"));
+  const pauseButton = carousel.querySelector(".carousel-toggle");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  let activeSlide = 0;
+  let isPlaying = !prefersReducedMotion;
+  let timer;
+
+  function showSlide(index) {
+    slides[activeSlide].classList.remove("is-active");
+    activeSlide = (index + slides.length) % slides.length;
+    slides[activeSlide].classList.add("is-active");
+  }
+
+  function startSlideshow() {
+    window.clearInterval(timer);
+    if (isPlaying) {
+      timer = window.setInterval(() => showSlide(activeSlide + 1), 5000);
+    }
+    pauseButton.textContent = isPlaying ? "Pause slideshow" : "Play slideshow";
+  }
+
+  carousel.querySelector(".carousel-previous").addEventListener("click", () => {
+    showSlide(activeSlide - 1);
+    startSlideshow();
+  });
+
+  carousel.querySelector(".carousel-next").addEventListener("click", () => {
+    showSlide(activeSlide + 1);
+    startSlideshow();
+  });
+
+  pauseButton.addEventListener("click", () => {
+    isPlaying = !isPlaying;
+    startSlideshow();
+  });
+
+  startSlideshow();
+</script>
 </body>
 </html>
