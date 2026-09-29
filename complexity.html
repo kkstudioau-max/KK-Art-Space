@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Complexity, an original mixed-media artwork by KK Art Space.">
+  <title>Complexity | KK Art Space</title>
+  <link rel="stylesheet" href="image-viewer.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    a { color: inherit; }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a { color: var(--muted); text-decoration: none; }
+
+    .back-link {
+      display: inline-block;
+      margin: 30px 0 18px;
+      color: var(--muted);
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .details { color: var(--muted); }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      max-height: 75vh;
+      margin: 28px 0;
+      object-fit: contain;
+      background: #eeece6;
+    }
+
+    .description {
+      max-width: 760px;
+      margin: 32px 0 48px;
+    }
+
+    .description p { color: var(--muted); }
+
+    .additional-images {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 24px 0 64px;
+    }
+
+    .additional-images img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      background: #eeece6;
+      cursor: zoom-in;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 650px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .additional-images { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home">KK Art Space</a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall Art</a>
+      <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="wall-floor-art.html">← Back to Wall Art</a>
+    <h1>Complexity</h1>
+    <div class="details">1230 × 630 mm | Mixed media on board | Framed | Original 1/1</div>
+
+    <img class="main-image image-viewer-trigger"
+         src="Complexity-1.jpg"
+         alt="Complexity, full view">
+
+    <section class="description" aria-label="Artwork description">
+      <p>Complexity explores the way our experiences accumulate — overlapping, obscuring and altering what came before. Layers of weathered blue, muted earth tones and softened neutrals move across a heavily worked surface, shifting between areas of quiet and disruption.</p>
+      <p>Marks emerge, disappear and resurface; fragments of colour interrupt one another without ever completely taking over. Beneath them, cracks, scars and irregular textures remain visible, suggesting histories that cannot simply be erased.</p>
+      <p>Rather than resolving into something orderly, Complexity allows contrasting elements to coexist — reflecting the complicated, layered nature of being human and the beauty that can exist within imperfection.</p>
+    </section>
+
+    <h2>Additional views</h2>
+    <div class="additional-images" aria-label="Additional views of Complexity">
+      <img class="image-viewer-trigger" src="Complexity-2.jpg" alt="Additional view of Complexity">
+      <img class="image-viewer-trigger" src="Complexity-3.jpg" alt="Additional view of Complexity">
+      <img class="image-viewer-trigger" src="Complexity-4.jpg" alt="Additional view of Complexity">
+      <img class="image-viewer-trigger" src="Complexity-5.jpg" alt="Additional view of Complexity">
+    </div>
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="image-viewer.js"></script>
+</body>
+</html>
