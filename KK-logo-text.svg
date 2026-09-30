@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="41.320419mm"
+   height="10.559733mm"
+   viewBox="0 0 41.320419 10.559733"
+   version="1.1"
+   id="svg1"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1">
+    <rect
+       x="256"
+       y="548"
+       width="214"
+       height="59"
+       id="rect5" />
+  </defs>
+  <g
+     id="layer1"
+     transform="translate(-77.787498,-85.725004)">
+    <g
+       id="g7"
+       transform="translate(20.889677,-57.49513)">
+      <path
+         id="path3-8-1-84-8"
+         style="fill:#252522;fill-opacity:1;stroke-width:0.0683901;stroke-dasharray:none"
+         d="m 62.521843,143.22013 -1.73103,3.49048 -3.89299,0.64711 2.82673,2.61598 -0.65345,3.80616 3.47797,-1.87364 3.48929,1.70513 -0.67728,-3.77393 2.80995,-2.75241 -3.89652,-0.45873 z m -2.17947,4.70936 h 0.54631 v 0.92571 l 0.75675,-0.92571 h 0.63299 l -0.82799,0.94632 0.8692,1.09892 h -0.66993 l -0.63299,-0.81871 -0.12804,0.14982 v 0.66889 h -0.5463 z m 2.26601,0 h 2.11795 v 0.52746 h -0.95883 l 0.95883,0.73071 v 0.6112 l -0.98017,-0.79944 -1.13778,0.83933 v -0.64697 l 0.84771,-0.61121 -0.15512,-0.12362 h -0.69259 z" />
+      <text
+         xml:space="preserve"
+         transform="matrix(0.26458333,0,0,0.26458333,0,-3.9821014)"
+         id="text4"
+         style="font-weight:bold;font-size:37.3333px;font-family:Sans;-inkscape-font-specification:'Sans Bold';writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect5);opacity:1;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1.00157;stroke-dasharray:none"><tspan
+           x="256"
+           y="582.0603"
+           id="tspan6"><tspan
+   style="font-size:21.3333px;fill:#252522"
+   id="tspan5">Art Space</tspan> </tspan><tspan
+           x="256"
+           y="641.0603"
+           id="tspan8"><tspan
+             dx="0 26.523415 26.104145 24.937481 21.966125"
+             id="tspan7">Space</tspan></tspan></text>
+    </g>
+  </g>
+</svg>
