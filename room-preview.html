@@ -302,6 +302,7 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
     });
 
     sizeControl.addEventListener("input", updateSize);
+    wallWidth.addEventListener("input", updateSize);
 
     overlay.addEventListener("pointerdown", (event) => {
       event.preventDefault();
