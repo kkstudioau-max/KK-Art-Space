@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Preview The Stains of Life on your own wall.">
+  <title>See The Stains of Life in Your Space | KK Art Space</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand img {
+      display: block;
+      width: 156px;
+      height: 40px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a { color: var(--muted); }
+
+    main { padding: 28px 0 48px; }
+
+    h1 {
+      margin: 0 0 8px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .intro, .privacy-note, .status {
+      color: var(--muted);
+    }
+
+    .upload-control {
+      display: block;
+      margin: 24px 0 8px;
+      font-weight: 700;
+    }
+
+    input[type="file"] {
+      display: block;
+      max-width: 100%;
+      margin-top: 8px;
+      font: inherit;
+    }
+
+    .privacy-note { margin: 0 0 18px; font-size: .9rem; }
+
+    .controls {
+      display: none;
+      margin: 18px 0;
+    }
+
+    .controls label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      max-width: 420px;
+      font-weight: 700;
+    }
+
+    .controls input[type="range"] { flex: 1; }
+
+    .stage {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      line-height: 0;
+      background: #eeece6;
+    }
+
+    .stage[hidden] { display: none; }
+
+    .room-photo {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .artwork-overlay {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      padding: 0;
+      border: 0;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      cursor: move;
+      touch-action: none;
+    }
+
+    .artwork-overlay:focus-visible {
+      outline: 3px solid #716d61;
+      outline-offset: 3px;
+    }
+
+    .status {
+      min-height: 1.6em;
+      margin: 10px 0;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 650px) {
+      header { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home">
+      <img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40">
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="the-stains-of-life.html">The Stains of Life</a>
+      <a href="wall-floor-art.html">Wall Art</a>
+    </nav>
+  </header>
+
+  <main>
+    <a href="the-stains-of-life.html">← Back to The Stains of Life</a>
+    <h1>See The Stains of Life in Your Space</h1>
+    <p class="intro">Choose a photo of your room, then drag and resize the artwork preview on the wall.</p>
+
+    <label class="upload-control" for="room-upload">Choose a room photo</label>
+    <input id="room-upload" type="file" accept="image/*">
+    <p class="privacy-note">Your photo stays on this device. It is not uploaded or saved by this page.</p>
+
+    <div class="controls" id="preview-controls">
+      <label for="artwork-size">
+        Artwork size
+        <input id="artwork-size" type="range" min="10" max="70" value="30">
+        <output id="size-value" for="artwork-size">30%</output>
+      </label>
+      <p>Drag the artwork to position it. You can also focus it and use the arrow keys.</p>
+    </div>
+
+    <div class="stage" id="preview-stage" hidden>
+      <img class="room-photo" id="room-photo" alt="Your selected room">
+      <button class="artwork-overlay" id="artwork-overlay" type="button"
+              aria-label="Move The Stains of Life preview with the arrow keys"></button>
+    </div>
+
+    <p class="status" id="preview-status" role="status" aria-live="polite">
+      Select a room photo to begin.
+    </p>
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+
+  <script>
+    const artwork = {
+      title: "The Stains of Life",
+      image: "The_Stains_of_Life_1.jpg",
+      width: 900,
+      height: 600
+    };
+
+    const upload = document.querySelector("#room-upload");
+    const controls = document.querySelector("#preview-controls");
+    const stage = document.querySelector("#preview-stage");
+    const roomPhoto = document.querySelector("#room-photo");
+    const overlay = document.querySelector("#artwork-overlay");
+    const sizeControl = document.querySelector("#artwork-size");
+    const sizeValue = document.querySelector("#size-value");
+    const status = document.querySelector("#preview-status");
+
+    let roomPhotoUrl = "";
+    let xPosition = 0.5;
+    let yPosition = 0.5;
+    let dragStart = null;
+
+    overlay.style.backgroundImage = `url("${artwork.image}")`;
+    overlay.style.aspectRatio = `${artwork.width} / ${artwork.height}`;
+
+    function clamp(value) {
+      return Math.max(0, Math.min(1, value));
+    }
+
+    function positionArtwork() {
+      const maxX = Math.max(0, stage.clientWidth - overlay.offsetWidth);
+      const maxY = Math.max(0, stage.clientHeight - overlay.offsetHeight);
+
+      overlay.style.left = `${xPosition * maxX}px`;
+      overlay.style.top = `${yPosition * maxY}px`;
+    }
+
+    function updateSize() {
+      overlay.style.width = `${sizeControl.value}%`;
+      sizeValue.value = `${sizeControl.value}%`;
+      positionArtwork();
+    }
+
+    upload.addEventListener("change", () => {
+      const file = upload.files && upload.files[0];
+      if (!file) return;
+
+      if (!file.type.startsWith("image/")) {
+        status.textContent = "Please choose an image file.";
+        return;
+      }
+
+      const nextUrl = URL.createObjectURL(file);
+      roomPhoto.onload = () => {
+        if (roomPhotoUrl) URL.revokeObjectURL(roomPhotoUrl);
+        roomPhotoUrl = nextUrl;
+        stage.hidden = false;
+        controls.style.display = "block";
+        xPosition = 0.5;
+        yPosition = 0.5;
+        updateSize();
+        status.textContent = `Room photo loaded. Position the ${artwork.title} preview on your wall.`;
+      };
+
+      roomPhoto.onerror = () => {
+        URL.revokeObjectURL(nextUrl);
+        status.textContent = "That photo could not be opened. Please choose a different image.";
+      };
+
+      roomPhoto.src = nextUrl;
+    });
+
+    sizeControl.addEventListener("input", updateSize);
+
+    overlay.addEventListener("pointerdown", (event) => {
+      event.preventDefault();
+      overlay.focus();
+      overlay.setPointerCapture(event.pointerId);
+      dragStart = {
+        pointerId: event.pointerId,
+        x: event.clientX,
+        y: event.clientY,
+        xPosition,
+        yPosition
+      };
+    });
+
+    overlay.addEventListener("pointermove", (event) => {
+      if (!dragStart || dragStart.pointerId !== event.pointerId) return;
+
+      const maxX = Math.max(1, stage.clientWidth - overlay.offsetWidth);
+      const maxY = Math.max(1, stage.clientHeight - overlay.offsetHeight);
+
+      xPosition = clamp(dragStart.xPosition + (event.clientX - dragStart.x) / maxX);
+      yPosition = clamp(dragStart.yPosition + (event.clientY - dragStart.y) / maxY);
+      positionArtwork();
+    });
+
+    function endDrag() {
+      dragStart = null;
+    }
+
+    overlay.addEventListener("pointerup", endDrag);
+    overlay.addEventListener("pointercancel", endDrag);
+
+    overlay.addEventListener("keydown", (event) => {
+      const step = event.shiftKey ? 0.05 : 0.015;
+      if (event.key === "ArrowLeft") xPosition -= step;
+      else if (event.key === "ArrowRight") xPosition += step;
+      else if (event.key === "ArrowUp") yPosition -= step;
+      else if (event.key === "ArrowDown") yPosition += step;
+      else return;
+
+      event.preventDefault();
+      xPosition = clamp(xPosition);
+      yPosition = clamp(yPosition);
+      positionArtwork();
+    });
+
+    new ResizeObserver(positionArtwork).observe(stage);
+
+    window.addEventListener("beforeunload", () => {
+      if (roomPhotoUrl) URL.revokeObjectURL(roomPhotoUrl);
+    });
+  </script>
+</body>
+</html>
