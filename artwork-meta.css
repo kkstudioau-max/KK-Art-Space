@@ -1,0 +1,51 @@
+.artwork-materials {
+  margin: 8px 0;
+  color: #6d6b65;
+}
+
+.artwork-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 0;
+  color: #6d6b65;
+  font-size: .72rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.artwork-status img {
+  width: 14px;
+  height: 14px;
+  object-fit: contain;
+}
+
+.artwork-status:not([data-status="AVAILABLE"]) .artwork-price,
+.artwork-status:not([data-status="AVAILABLE"]) .artwork-price-separator {
+  display: none;
+}
+
+.artwork-enquiry {
+  display: inline-block;
+  margin: 8px 0 24px;
+  padding: 9px 14px;
+  border: 1px solid #252522;
+  background: #252522;
+  color: #fff;
+  font-size: .9rem;
+  text-decoration: none;
+}
+
+.artwork-enquiry:hover {
+  background: transparent;
+  color: #252522;
+}
+
+.artwork-enquiry:focus-visible {
+  outline: 2px solid #716d61;
+  outline-offset: 3px;
+}
+
+.description {
+  margin-top: 48px;
+}
