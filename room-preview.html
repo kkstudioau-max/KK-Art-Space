@@ -170,13 +170,24 @@
     <p class="privacy-note">Your photo stays on this device. It is not uploaded or saved by this page.</p>
 
     <div class="controls" id="preview-controls">
-      <label for="artwork-size">
-        Artwork size
-        <input id="artwork-size" type="range" min="10" max="70" value="30">
-        <output id="size-value" for="artwork-size">30%</output>
-      </label>
-      <p>Drag the artwork to position it. You can also focus it and use the arrow keys.</p>
-    </div>
+  <label for="artwork-size">
+    Preview size
+    <input id="artwork-size" type="range" min="10" max="70" value="30">
+    <output id="size-value" for="artwork-size">30%</output>
+  </label>
+
+  <label class="measurement-control" for="wall-width">
+    Visible wall width in your photo (mm)
+    <input id="wall-width" type="number" min="100" step="10"
+           inputmode="numeric" placeholder="For example, 3000">
+  </label>
+  <p>Enter the real width from one side of the visible wall to the other. A straight-on photo gives a better estimate.</p>
+  <p class="artwork-dimensions" id="artwork-dimensions" aria-live="polite">
+    Enter the wall width to estimate artwork dimensions.
+  </p>
+
+  <p>Drag the artwork to position it. You can also focus it and use the arrow keys.</p>
+</div>
 
     <div class="stage" id="preview-stage" hidden>
       <img class="room-photo" id="room-photo" alt="Your selected room">
