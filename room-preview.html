@@ -253,10 +253,24 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
     }
 
     function updateSize() {
-      overlay.style.width = `${sizeControl.value}%`;
-      sizeValue.value = `${sizeControl.value}%`;
-      positionArtwork();
-    }
+  overlay.style.width = `${sizeControl.value}%`;
+  sizeValue.value = `${sizeControl.value}%`;
+  positionArtwork();
+
+  const wallWidthMm = Number(wallWidth.value);
+  if (!Number.isFinite(wallWidthMm) || wallWidthMm <= 0 || !roomPhoto.clientWidth) {
+    artworkDimensions.textContent = "Enter the wall width to estimate artwork dimensions.";
+    return;
+  }
+
+  const artworkWidthMm = wallWidthMm * overlay.offsetWidth / roomPhoto.clientWidth;
+  const artworkHeightMm = artworkWidthMm * artwork.height / artwork.width;
+  const roundedWidth = Math.round(artworkWidthMm / 10) * 10;
+  const roundedHeight = Math.round(artworkHeightMm / 10) * 10;
+
+  artworkDimensions.textContent =
+    `Estimated artwork size: ${roundedWidth} mm × ${roundedHeight} mm`;
+}
 
     upload.addEventListener("change", () => {
       const file = upload.files && upload.files[0];
