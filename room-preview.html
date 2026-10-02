@@ -349,7 +349,7 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
       positionArtwork();
     });
 
-    new ResizeObserver(positionArtwork).observe(stage);
+ new ResizeObserver(updateSize).observe(stage);
 
     window.addEventListener("beforeunload", () => {
       if (roomPhotoUrl) URL.revokeObjectURL(roomPhotoUrl);
