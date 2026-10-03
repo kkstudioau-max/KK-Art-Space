@@ -282,12 +282,6 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
     `Estimated artwork size: ${roundedWidth} mm × ${roundedHeight} mm`;
 }
 
-  const wallWidthMm = Number(wallWidth.value);
-  if (!Number.isFinite(wallWidthMm) || wallWidthMm <= 0 || !roomPhoto.clientWidth) {
-    artworkDimensions.textContent = "Enter the wall width to estimate artwork dimensions.";
-    return;
-  }
-
   const artworkWidthMm = wallWidthMm * overlay.offsetWidth / roomPhoto.clientWidth;
   const artworkHeightMm = artworkWidthMm * artwork.height / artwork.width;
   const roundedWidth = Math.round(artworkWidthMm / 10) * 10;
