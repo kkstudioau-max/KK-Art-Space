@@ -282,15 +282,6 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
     `Estimated artwork size: ${roundedWidth} mm × ${roundedHeight} mm`;
 }
 
-  const artworkWidthMm = wallWidthMm * overlay.offsetWidth / roomPhoto.clientWidth;
-  const artworkHeightMm = artworkWidthMm * artwork.height / artwork.width;
-  const roundedWidth = Math.round(artworkWidthMm / 10) * 10;
-  const roundedHeight = Math.round(artworkHeightMm / 10) * 10;
-
-  artworkDimensions.textContent =
-    `Estimated artwork size: ${roundedWidth} mm × ${roundedHeight} mm`;
-}
-
     upload.addEventListener("change", () => {
       const file = upload.files && upload.files[0];
       if (!file) return;
