@@ -182,10 +182,10 @@
 
     <div class="controls" id="preview-controls">
   <label for="artwork-size">
-    Preview size
-    <input id="artwork-size" type="range" min="10" max="70" value="30">
-    <output id="size-value" for="artwork-size">30%</output>
-  </label>
+  Preview size (% of actual dimensions)
+  <input id="artwork-size" type="range" min="50" max="150" step="5" value="100">
+  <output id="size-value" for="artwork-size">100%</output>
+</label>
 
   <label class="measurement-control" for="wall-width">
     Wall width represented by the full photo (mm)
@@ -253,9 +253,34 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
     }
 
     function updateSize() {
-  overlay.style.width = `${sizeControl.value}%`;
-  sizeValue.value = `${sizeControl.value}%`;
+  const wallWidthMm = Number(wallWidth.value);
+  const sizePercent = Number(sizeControl.value);
+  const hasWallScale =
+    Number.isFinite(wallWidthMm) &&
+    wallWidthMm > 0 &&
+    roomPhoto.clientWidth > 0;
+
+  overlay.style.width = hasWallScale
+    ? `${(artwork.width * sizePercent / 100 / wallWidthMm) * roomPhoto.clientWidth}px`
+    : `${30 * sizePercent / 100}%`;
+
+  sizeValue.value = `${sizePercent}%`;
   positionArtwork();
+
+  if (!hasWallScale) {
+    artworkDimensions.textContent =
+      "Enter the wall width to show the artwork at actual size.";
+    return;
+  }
+
+  const artworkWidthMm = artwork.width * sizePercent / 100;
+  const artworkHeightMm = artwork.height * sizePercent / 100;
+  const roundedWidth = Math.round(artworkWidthMm / 10) * 10;
+  const roundedHeight = Math.round(artworkHeightMm / 10) * 10;
+
+  artworkDimensions.textContent =
+    `Estimated artwork size: ${roundedWidth} mm × ${roundedHeight} mm`;
+}
 
   const wallWidthMm = Number(wallWidth.value);
   if (!Number.isFinite(wallWidthMm) || wallWidthMm <= 0 || !roomPhoto.clientWidth) {
