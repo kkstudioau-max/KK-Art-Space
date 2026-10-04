@@ -84,28 +84,58 @@
     .controls {
       display: none;
       margin: 18px 0;
+      max-width: 620px;
     }
 
-    .controls label {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .controls label[for="artwork-size"] {
+      display: grid;
+      gap: 10px;
       max-width: 420px;
       font-weight: 700;
     }
 
-    .controls input[type="range"] { flex: 1; }
-    #wall-width {
-  width: 10rem;
-  padding: 6px;
-  font: inherit;
-}
+    #artwork-size {
+      width: 100%;
+      accent-color: var(--ink);
+    }
 
-.artwork-dimensions {
-  color: var(--ink);
-  font-size: 1.1rem;
-  font-weight: 700;
-}
+    #size-value {
+      font-size: .95rem;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .measurement-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 14px;
+      max-width: 520px;
+      margin-top: 18px;
+    }
+
+    label.measurement-control {
+      display: grid;
+      gap: 8px;
+      font-weight: 700;
+    }
+
+    #wall-width,
+    #wall-height {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .artwork-dimensions {
+      margin: 16px 0 0;
+      color: var(--ink);
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
 
     .stage {
       position: relative;
@@ -174,7 +204,7 @@
   <main>
     <a href="the-stains-of-life.html">← Back to The Stains of Life</a>
     <h1>See The Stains of Life in Your Space</h1>
-    <p class="intro">Choose a photo of your room, then drag and resize the artwork preview on the wall.</p>
+    <p class="intro">Choose a room photo, then drag and position the artwork preview on your wall.</p>
 
     <label class="upload-control" for="room-upload">Choose a room photo</label>
     <input id="room-upload" type="file" accept="image/*">
@@ -182,19 +212,27 @@
 
     <div class="controls" id="preview-controls">
   <label for="artwork-size">
-  Preview size (% of actual dimensions)
+  Art preview size
   <input id="artwork-size" type="range" min="50" max="150" step="5" value="100">
   <output id="size-value" for="artwork-size">100%</output>
 </label>
 
-  <label class="measurement-control" for="wall-width">
-    Wall width represented by the full photo (mm)
-    <input id="wall-width" type="number" min="100" step="10"
-           inputmode="numeric" placeholder="For example, 3000">
-  </label>
-  <p>Enter the real width represented by the full width of your photo. A straight-on photo gives a better estimate.</p>
+  <div class="measurement-group">
+    <label class="measurement-control" for="wall-width">
+      Wall width (mm)
+      <input id="wall-width" type="number" min="100" step="10"
+             inputmode="numeric" placeholder="For example, 3000">
+    </label>
+
+    <label class="measurement-control" for="wall-height">
+      Wall height (mm)
+      <input id="wall-height" type="number" min="100" step="10"
+             inputmode="numeric" placeholder="For example, 2400">
+    </label>
+  </div>
+  <p>Measure the full wall width and height in the photo. A straight-on photo gives a better estimate.</p>
   <p class="artwork-dimensions" id="artwork-dimensions" aria-live="polite">
-    Enter the wall width to estimate artwork dimensions.
+    Actual artwork size at 100%: 900 mm × 600 mm
   </p>
 
   <p>Drag the artwork to position it. You can also focus it and use the arrow keys.</p>
@@ -218,7 +256,9 @@
       title: "The Stains of Life",
       image: "The_stains_of_life_croped.jpeg",
       width: 900,
-      height: 600
+      height: 600,
+      actualWidthMm: 900,
+      actualHeightMm: 600
     };
 
     const upload = document.querySelector("#room-upload");
@@ -229,7 +269,8 @@
     const sizeControl = document.querySelector("#artwork-size");
     const sizeValue = document.querySelector("#size-value");
     const wallWidth = document.querySelector("#wall-width");
-const artworkDimensions = document.querySelector("#artwork-dimensions");
+    const wallHeight = document.querySelector("#wall-height");
+    const artworkDimensions = document.querySelector("#artwork-dimensions");
     const status = document.querySelector("#preview-status");
 
     let roomPhotoUrl = "";
@@ -244,43 +285,51 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
       return Math.max(0, Math.min(1, value));
     }
 
+    function getPositionBounds() {
+      return {
+        maxX: Math.max(0, stage.clientWidth - overlay.offsetWidth),
+        maxY: Math.max(0, stage.clientHeight - overlay.offsetHeight)
+      };
+    }
+
     function positionArtwork() {
-      const maxX = Math.max(0, stage.clientWidth - overlay.offsetWidth);
-      const maxY = Math.max(0, stage.clientHeight - overlay.offsetHeight);
+      const { maxX, maxY } = getPositionBounds();
 
       overlay.style.left = `${xPosition * maxX}px`;
       overlay.style.top = `${yPosition * maxY}px`;
     }
 
     function updateSize() {
-  const wallWidthMm = Number(wallWidth.value);
-  const sizePercent = Number(sizeControl.value);
-  const hasWallScale =
-    Number.isFinite(wallWidthMm) &&
-    wallWidthMm > 0 &&
-    roomPhoto.clientWidth > 0;
+      const wallWidthMm = Number(wallWidth.value);
+      const wallHeightMm = Number(wallHeight.value);
+      const sizePercent = Number(sizeControl.value);
 
-  overlay.style.width = hasWallScale
-    ? `${(artwork.width * sizePercent / 100 / wallWidthMm) * roomPhoto.clientWidth}px`
-    : `${30 * sizePercent / 100}%`;
+      const actualWidthMm = artwork.actualWidthMm * sizePercent / 100;
+      const actualHeightMm = artwork.actualHeightMm * sizePercent / 100;
+      const hasWallWidth = Number.isFinite(wallWidthMm) && wallWidthMm > 0 && roomPhoto.clientWidth > 0;
+      const hasWallHeight = Number.isFinite(wallHeightMm) && wallHeightMm > 0 && roomPhoto.clientHeight > 0;
 
-  sizeValue.value = `${sizePercent}%`;
-  positionArtwork();
+      if (hasWallWidth || hasWallHeight) {
+        const widthScale = hasWallWidth ? roomPhoto.clientWidth / wallWidthMm : Infinity;
+        const heightScale = hasWallHeight ? roomPhoto.clientHeight / wallHeightMm : Infinity;
+        const scaleFactor = Math.min(widthScale, heightScale);
 
-  if (!hasWallScale) {
-    artworkDimensions.textContent =
-      "Enter the wall width to show the artwork at actual size.";
-    return;
-  }
+        overlay.style.width = `${actualWidthMm * scaleFactor}px`;
+        overlay.style.height = `${actualHeightMm * scaleFactor}px`;
+      } else {
+        overlay.style.width = `${30 * sizePercent / 100}%`;
+        overlay.style.height = "auto";
+      }
 
-  const artworkWidthMm = artwork.width * sizePercent / 100;
-  const artworkHeightMm = artwork.height * sizePercent / 100;
-  const roundedWidth = Math.round(artworkWidthMm / 10) * 10;
-  const roundedHeight = Math.round(artworkHeightMm / 10) * 10;
+      sizeValue.value = `${sizePercent}%`;
+      positionArtwork();
 
-  artworkDimensions.textContent =
-    `Estimated artwork size: ${roundedWidth} mm × ${roundedHeight} mm`;
-}
+      const roundedWidth = Math.round(actualWidthMm / 10) * 10;
+      const roundedHeight = Math.round(actualHeightMm / 10) * 10;
+
+      artworkDimensions.textContent =
+        `Actual artwork size at ${sizePercent}%: ${roundedWidth} mm × ${roundedHeight} mm`;
+    }
 
     upload.addEventListener("change", () => {
       const file = upload.files && upload.files[0];
@@ -300,7 +349,7 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
         xPosition = 0.5;
         yPosition = 0.5;
         updateSize();
-        status.textContent = `Room photo loaded. Position the ${artwork.title} preview on your wall.`;
+        status.textContent = `Room photo loaded. Position ${artwork.title} on your wall.`;
       };
 
       roomPhoto.onerror = () => {
@@ -313,6 +362,7 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
 
     sizeControl.addEventListener("input", updateSize);
     wallWidth.addEventListener("input", updateSize);
+    wallHeight.addEventListener("input", updateSize);
 
     overlay.addEventListener("pointerdown", (event) => {
       event.preventDefault();
@@ -330,11 +380,12 @@ const artworkDimensions = document.querySelector("#artwork-dimensions");
     overlay.addEventListener("pointermove", (event) => {
       if (!dragStart || dragStart.pointerId !== event.pointerId) return;
 
-      const maxX = Math.max(1, stage.clientWidth - overlay.offsetWidth);
-      const maxY = Math.max(1, stage.clientHeight - overlay.offsetHeight);
+      const { maxX, maxY } = getPositionBounds();
+      const xRange = maxX || 1;
+      const yRange = maxY || 1;
 
-      xPosition = clamp(dragStart.xPosition + (event.clientX - dragStart.x) / maxX);
-      yPosition = clamp(dragStart.yPosition + (event.clientY - dragStart.y) / maxY);
+      xPosition = clamp(dragStart.xPosition + (event.clientX - dragStart.x) / xRange);
+      yPosition = clamp(dragStart.yPosition + (event.clientY - dragStart.y) / yRange);
       positionArtwork();
     });
 
