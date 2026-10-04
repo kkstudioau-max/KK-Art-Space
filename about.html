@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Contact KK Art Space by email or Instagram.">
-  <title>Contact | KK Art Space</title>
+  <meta name="description" content="Meet the Newcastle-based mixed-media artist behind KK Art Space.">
+  <title>About | KK Art Space</title>
   <style>
     :root {
       color-scheme: light;
@@ -56,53 +56,39 @@
       text-decoration: none;
     }
 
-    nav a:hover, .contact-option a:hover { color: var(--ink); }
+    nav a:hover, .contact-link:hover { color: var(--ink); }
 
     main {
       max-width: 760px;
       padding: 72px 0 96px;
     }
 
-    h1, h2 {
-      font-family: Georgia, "Times New Roman", serif;
-      font-weight: 400;
+    .eyebrow {
+      color: var(--muted);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
     }
 
     h1 {
-      margin: 0 0 12px;
+      margin: 12px 0 20px;
+      font-family: Georgia, "Times New Roman", serif;
       font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 400;
       line-height: 1.1;
     }
 
-    .intro, .contact-option p {
+    main p {
       color: var(--muted);
+      font-size: 1.05rem;
     }
 
-    .contact-options {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-
-    .contact-option {
-      padding: 24px;
-      border: 1px solid var(--line);
-    }
-
-    .contact-option h2 {
-      margin: 0 0 8px;
-      font-size: 1.5rem;
-    }
-
-    .contact-option p {
-      margin: 0 0 12px;
-    }
-
-    .contact-option a {
+    .contact-link {
+      display: inline-block;
+      margin-top: 8px;
       font-weight: 700;
       text-underline-offset: 4px;
-      overflow-wrap: anywhere;
     }
 
     footer {
@@ -113,9 +99,7 @@
     }
 
     @media (max-width: 600px) {
-      header { align-items: flex-start; flex-direction: column; }
-      .contact-options { grid-template-columns: 1fr; }
-      main { padding: 52px 0 72px; }
+      main { padding: 48px 0 72px; }
     }
   </style>
   <link rel="stylesheet" href="mobile.css">
@@ -126,27 +110,16 @@
     <nav aria-label="Main navigation">
       <a href="wall-floor-art.html">Wall Art</a>
       <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
-      <a class="about-mobile-link" href="about.html">About</a>
-      <a href="contact.html" aria-current="page">Contact</a>
+      <a class="about-mobile-link" href="about.html" aria-current="page">About</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
-    <h1>Get in touch</h1>
-    <p class="intro">For artwork enquiries or any other questions, you can reach KK Art Space by email or Instagram.</p>
-
-    <div class="contact-options">
-      <section class="contact-option" aria-labelledby="email-heading">
-        <h2 id="email-heading">Email</h2>
-        <p>Send a message about an artwork or anything else.</p>
-        <a href="mailto:kk.artspace.au@gmail.com">kk.artspace.au@gmail.com</a>
-      </section>
-      <section class="contact-option" aria-labelledby="instagram-heading">
-        <h2 id="instagram-heading">Instagram</h2>
-        <p>Follow along and send a message on Instagram.</p>
-        <a href="https://www.instagram.com/kk.artspace/" target="_blank" rel="noopener noreferrer">@kk.artspace</a>
-      </section>
-    </div>
+    <div class="eyebrow">A little about me</div>
+    <h1>Art shaped by what remains</h1>
+    <p>I’m a mixed-media artist based in Newcastle, Australia, creating tactile works that explore the tension between fragility and resilience. I’m drawn to texture, worn surfaces, cracks, layers and imperfections — the marks that suggest a history rather than something untouched. Using materials such as plaster, fabric, timber, paper, sand and paint, I build each piece intuitively, allowing the work to evolve as I go. My art is often inspired by the things we carry beneath the surface: memory, trauma, healing, connection and the quieter parts of the human experience.</p>
+    <a class="contact-link" href="contact.html">Get in touch</a>
   </main>
 
   <footer>© 2026 KK Art Space · Australia</footer>
