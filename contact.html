@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact KK Art Space by email or Instagram.">
+  <title>Contact | KK Art Space</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand img {
+      display: block;
+      width: 156px;
+      height: 40px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    nav a:hover, .contact-option a:hover { color: var(--ink); }
+
+    main {
+      max-width: 760px;
+      padding: 72px 0 96px;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .intro, .contact-option p {
+      color: var(--muted);
+    }
+
+    .contact-options {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .contact-option {
+      padding: 24px;
+      border: 1px solid var(--line);
+    }
+
+    .contact-option h2 {
+      margin: 0 0 8px;
+      font-size: 1.5rem;
+    }
+
+    .contact-option p {
+      margin: 0 0 12px;
+    }
+
+    .contact-option a {
+      font-weight: 700;
+      text-underline-offset: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 600px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .contact-options { grid-template-columns: 1fr; }
+      main { padding: 52px 0 72px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home"><img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40"></a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall Art</a>
+      <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Get in touch</h1>
+    <p class="intro">For artwork enquiries or any other questions, you can reach KK Art Space by email or Instagram.</p>
+
+    <div class="contact-options">
+      <section class="contact-option" aria-labelledby="email-heading">
+        <h2 id="email-heading">Email</h2>
+        <p>Send a message about an artwork or anything else.</p>
+        <a href="mailto:kk.artspace.au@gmail.com">kk.artspace.au@gmail.com</a>
+      </section>
+      <section class="contact-option" aria-labelledby="instagram-heading">
+        <h2 id="instagram-heading">Instagram</h2>
+        <p>Follow along and send a message on Instagram.</p>
+        <a href="https://www.instagram.com/kk.artspace/" target="_blank" rel="noopener noreferrer">@kk.artspace</a>
+      </section>
+    </div>
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+</body>
+</html>
