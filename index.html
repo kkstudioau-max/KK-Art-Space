@@ -160,6 +160,19 @@
       text-underline-offset: 4px;
     }
 
+    .browse-link {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 16px;
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--paper);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .browse-link:hover { background: var(--accent); }
+
     footer {
       padding: 20px 0 28px;
       border-top: 1px solid var(--line);
@@ -233,6 +246,7 @@
 }
   </style>
   <link rel="stylesheet" href="image-viewer.css">
+  <link rel="stylesheet" href="mobile.css">
 </head>
 <body>
   <header>
@@ -248,7 +262,8 @@
     <section class="intro" id="home">
       <div class="eyebrow">Original mixed-media art · Newcastle, Australia</div>
       <h1>Holding tension between fragility and resilience.</h1>
-      <p>KK Art Space brings together original mixed-media works exploring texture, imperfection, memory and the quieter layers of human experience. Each piece is built by hand, with surfaces shaped through layering, erosion, repair and restraint. Browse the collection or get in touch to enquire about an available work.</p>
+      <p>KK Art Space brings together original mixed-media works exploring texture, memory and resilience. Each piece is made by hand in Newcastle, Australia.</p>
+      <a class="browse-link" href="wall-floor-art.html">Browse Wall Art</a>
     </section>
 
     <section class="featured-carousel" aria-label="Featured artworks">
