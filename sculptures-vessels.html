@@ -86,9 +86,6 @@
     }
 
     .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
       margin-bottom: 22px;
     }
 
@@ -100,6 +97,7 @@
     }
 
     .section-heading p {
+      margin: 4px 0 0;
       color: var(--muted);
       font-size: .9rem;
     }
@@ -174,8 +172,6 @@
       .gallery { grid-template-columns: 1fr; gap: 28px; }
       .artwork-placeholder { min-height: 340px; }
       .about { grid-template-columns: 1fr; gap: 12px; }
-      .section-heading { display: block; }
-      .section-heading p { margin-bottom: 0; }
     }
     .artwork-image {
   display: block;
@@ -226,8 +222,21 @@
 }
 
 .category-section {
-  padding: 40px 0 72px;
-  border-top: 1px solid var(--line);
+  padding: 14px 0 72px;
+}
+.artwork-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.artwork-link:hover h3 {
+  text-decoration: underline;
+}
+
+.artwork-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
 }
   </style>
   <link rel="stylesheet" href="mobile.css">
@@ -244,58 +253,60 @@
   </header>
   
     <main>
-  <section class="category-section" id="sculptures-vessels">
-    <div class="eyebrow">Three-dimensional works</div>
-    <h1>Sculptures and Vessels</h1>
+  <section class="category-section" id="sculptures-vessels" aria-labelledby="artworks-title">
+    <div class="section-heading">
+      <h2 id="artworks-title">Sculptures &amp; Vessels</h2>
+      <p>Original, one of a kind pieces</p>
+    </div>
     <div class="gallery">
   <article class="artwork">
     <a class="artwork-link" href="caldera-relic.html">
       <img class="artwork-image" src="Caldera-relic-1.jpeg" alt="Caldera Relic, sculptural vessel">
       <h3>Caldera Relic</h3>
     </a>
-    <p>300 × 230 mm | Mixed media sculptural vessel | Original 1/1</p>
+    <p>Mixed media sculptural vessel | 300 × 230 mm | Original 1/1</p>
   </article>
       <article class="artwork">
   <a class="artwork-link" href="jasper-hollow.html">
     <img class="artwork-image" src="Jasper-1.jpeg" alt="Jasper Hollow, mixed-media sculpture">
     <h3>Jasper Hollow</h3>
   </a>
-  <p>390 × 240 × 190 mm | Mixed media sculpture | Original 1/1</p>
+  <p>Mixed media sculpture | 390 × 240 × 190 mm | Original 1/1</p>
 </article>
       <article class="artwork">
   <a class="artwork-link" href="sutured-basin.html">
     <img class="artwork-image" src="Sutured%20Basin/Sutured-basin-1.jpeg" alt="Sutured Basin, mixed-media vessel">
     <h3>Sutured Basin</h3>
   </a>
-  <p>80 mm diameter × 50 mm high | Mixed media | Original 1/1</p>
+  <p>Mixed media | 80 mm diameter × 50 mm high | Original 1/1</p>
 </article>
       <article class="artwork">
   <a class="artwork-link" href="ash-reliquary.html">
     <img class="artwork-image" src="Ash-reliquary-1.jpeg" alt="Ash Reliquary, mixed-media vessel">
     <h3>Ash Reliquary</h3>
   </a>
-  <p>160 mm diameter × 200 mm high | Mixed media | Original 1/1</p>
+  <p>Mixed media | 160 mm diameter × 200 mm high | Original 1/1</p>
 </article>
       <article class="artwork">
   <a class="artwork-link" href="ash-basin.html">
     <img class="artwork-image" src="Ash-basin-1.jpeg" alt="Ash Basin, mixed-media sculptural vessel">
     <h3>Ash Basin</h3>
   </a>
-  <p>300 mm diameter × 100 mm high | Mixed media | Original 1/1</p>
+  <p>Mixed media | 300 mm diameter × 100 mm high | Original 1/1</p>
 </article>
       <article class="artwork">
   <a class="artwork-link" href="ash-vessel.html">
     <img class="artwork-image" src="Ash%20Vessel/Ash-vessel-1.jpg" alt="Ash Vessel, sculptural bowl">
     <h3>Ash Vessel</h3>
   </a>
-  <p>Mixed-media vessel | Available · $95 AUD</p>
+  <p>Mixed-media vessel | 140 mm diameter × 85 mm high | Original 1/1 | Available · $95 AUD</p>
 </article>
       <article class="artwork">
   <a class="artwork-link" href="ash-relic.html">
     <img class="artwork-image" src="Ash%20Relic/Ash-relic-1.jpg" alt="Ash Relic, sculptural vessel">
     <h3>Ash Relic</h3>
   </a>
-  <p>370 mm diameter × 30 mm high | Mixed media sculptural vessel | Original 1/1</p>
+  <p>Mixed media sculptural vessel | 370 mm diameter × 30 mm high | Original 1/1</p>
 </article>
 </div>
   </section>
