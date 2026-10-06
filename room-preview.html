@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Preview The Stains of Life on your own wall.">
-  <title>See The Stains of Life in Your Space | KK Art Space</title>
+  <meta name="description" content="Preview an artwork from KK Art Space on your own wall.">
+  <title>See Artwork in Your Space | KK Art Space</title>
   <style>
     :root {
       color-scheme: light;
@@ -197,7 +197,7 @@
       <img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40">
     </a>
     <nav aria-label="Main navigation">
-      <a href="the-stains-of-life.html">The Stains of Life</a>
+      <a id="artwork-nav-link" href="the-stains-of-life.html">The Stains of Life</a>
       <a href="wall-floor-art.html">Wall Art</a>
       <a class="about-mobile-link" href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -205,8 +205,8 @@
   </header>
 
   <main>
-    <a href="the-stains-of-life.html">← Back to The Stains of Life</a>
-    <h1>See The Stains of Life in Your Space</h1>
+    <a id="artwork-back-link" href="the-stains-of-life.html">← Back to The Stains of Life</a>
+    <h1 id="preview-heading">See The Stains of Life in Your Space</h1>
     <p class="intro">Choose a room photo, then drag and position the artwork preview on your wall.</p>
 
     <label class="upload-control" for="room-upload">Choose a room photo</label>
@@ -255,14 +255,41 @@
   <footer>© 2026 KK Art Space · Australia</footer>
 
   <script>
-    const artwork = {
-      title: "The Stains of Life",
-      image: "The_stains_of_life_croped.jpeg",
-      width: 900,
-      height: 600,
-      actualWidthMm: 900,
-      actualHeightMm: 600
-    };
+    const artworks = new Map([
+      ["the-stains-of-life", {
+        title: "The Stains of Life",
+        page: "the-stains-of-life.html",
+        image: "The_stains_of_life_croped.jpeg",
+        width: 900,
+        height: 600
+      }],
+      ["where-silence-settles", {
+        title: "Where Silence Settles",
+        page: "where-silence-settles.html",
+        image: "Where-silence-settles-1-cropped.JPEG",
+        width: 1200,
+        height: 1000
+      }]
+    ]);
+    const requestedArtwork = new URLSearchParams(window.location.search).get("artwork");
+    const artwork = artworks.get(requestedArtwork) || artworks.get("the-stains-of-life");
+    artwork.actualWidthMm = artwork.width;
+    artwork.actualHeightMm = artwork.height;
+
+    document.title = `See ${artwork.title} in Your Space | KK Art Space`;
+    document.querySelector('meta[name="description"]').content =
+      `Preview ${artwork.title} on your own wall.`;
+    document.querySelector("#artwork-nav-link").href = artwork.page;
+    document.querySelector("#artwork-nav-link").textContent = artwork.title;
+    document.querySelector("#artwork-back-link").href = artwork.page;
+    document.querySelector("#artwork-back-link").textContent = `← Back to ${artwork.title}`;
+    document.querySelector("#preview-heading").textContent = `See ${artwork.title} in Your Space`;
+    document.querySelector("#artwork-overlay").setAttribute(
+      "aria-label",
+      `Move ${artwork.title} preview with the arrow keys`
+    );
+    document.querySelector("#artwork-dimensions").textContent =
+      `Actual artwork size at 100%: ${artwork.actualWidthMm} mm × ${artwork.actualHeightMm} mm`;
 
     const upload = document.querySelector("#room-upload");
     const controls = document.querySelector("#preview-controls");
