@@ -165,13 +165,17 @@
       margin-top: 8px;
       padding: 10px 16px;
       border-radius: 8px;
-      background: var(--ink);
-      color: var(--paper);
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--muted);
       font-weight: 700;
       text-decoration: none;
     }
 
-    .browse-link:hover { background: var(--accent); }
+    .browse-link:hover {
+      background: var(--muted);
+      color: var(--paper);
+    }
 
     footer {
       padding: 20px 0 28px;
