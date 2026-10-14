@@ -24,7 +24,7 @@ document.addEventListener("click", (event) => {
     const closeButton = document.createElement("button");
     closeButton.className = "image-viewer-close";
     closeButton.type = "button";
-    closeButton.textContent = "Close";
+    closeButton.textContent = "×";
     closeButton.setAttribute("aria-label", "Close full-size image");
 
     closeButton.addEventListener("click", () => viewer.close());
