@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="What We Carry Forward considers how memories are carried, reshaped and passed between generations. An original artwork by KK Art Space.">
+  <title>What We Carry Forward | KK Art Space</title>
+  <link rel="stylesheet" href="image-viewer.css">
+  <link rel="stylesheet" href="artwork-meta.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    a { color: inherit; }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a { color: var(--muted); font-weight: 700; text-decoration: none; }
+
+    .back-link {
+      display: inline-block;
+      margin: 30px 0 18px;
+      color: var(--muted);
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      max-height: 75vh;
+      margin: 28px 0;
+      object-fit: contain;
+    }
+
+    .description {
+      max-width: 760px;
+      margin: 32px 0 48px;
+    }
+
+    .description p { color: var(--muted); }
+
+    .additional-images {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 24px 0 64px;
+    }
+
+    .additional-images img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 650px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .additional-images { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home"><img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40"></a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall Art</a>
+      <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
+      <a class="about-mobile-link" href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="wall-floor-art.html">← Back to Wall Art</a>
+    <h1>What We Carry Forward</h1>
+    <div class="artwork-materials">Mixed media on board | 1085 × 900 mm | Framed | Original 1/1</div>
+
+    <a class="artwork-enquiry" href="mailto:kk.artspace.au@gmail.com?subject=Enquiry%20about%20What%20We%20Carry%20Forward">Enquire about this work</a>
+    <a class="artwork-enquiry" href="room-preview.html?artwork=what-we-carry-forward">See it in your space</a>
+
+    <img class="main-image image-viewer-trigger"
+         src="What%20We%20Carry%20Forward/What-we-carry-forward-1.jpg"
+         alt="What We Carry Forward, full view">
+
+    <section class="description" aria-label="Artwork description">
+      <p>What We Carry Forward considers the way memories are carried, reshaped and passed between generations.</p>
+      <p>Faded pattern, softened colour and worn surfaces suggest fragments of lives already lived — details recalled imperfectly, stories revisited, and moments that remain long after their original setting has disappeared. Pink gives way to blue before gradually moving into a quieter, lighter space, reflecting the way memories can move beyond the person who first experienced them.</p>
+      <p>Some memories are our own. Others are given to us through stories, repeated so often that they become part of our own understanding of family and belonging.</p>
+      <p>Rather than representing memory as something that simply fades, the work considers what happens when it is shared — how the people we have loved can continue forward through the stories we tell, and eventually through generations who never knew them themselves.</p>
+      <p>For me, the family table is one of the places where that continuation happens — through conversation, recollection, humour and repeated stories, those who are absent are given a place again, and their memories are carried forward by the people sitting there now.</p>
+    </section>
+
+    <h2>Additional views</h2>
+    <div class="additional-images" aria-label="Additional views of What We Carry Forward">
+      <img class="image-viewer-trigger" src="What%20We%20Carry%20Forward/What-we-carry-forward-2.jpg" alt="Additional view of What We Carry Forward">
+      <img class="image-viewer-trigger" src="What%20We%20Carry%20Forward/What-we-carry-forward-3.jpg" alt="Additional view of What We Carry Forward">
+      <img class="image-viewer-trigger" src="What%20We%20Carry%20Forward/What-we-carry-forward-4.jpg" alt="Additional view of What We Carry Forward">
+      <img class="image-viewer-trigger" src="What%20We%20Carry%20Forward/What-we-carry-forward-5.jpeg" alt="Detail view of What We Carry Forward">
+    </div>
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="image-viewer.js"></script>
+</body>
+</html>
