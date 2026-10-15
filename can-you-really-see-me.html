@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Can You Really See Me? explores the space between what we reveal to the world and what we keep hidden beneath the surface. An original artwork by KK Art Space.">
+  <title>Can You Really See Me? | KK Art Space</title>
+  <link rel="stylesheet" href="image-viewer.css">
+  <link rel="stylesheet" href="artwork-meta.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    a { color: inherit; }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a { color: var(--muted); font-weight: 700; text-decoration: none; }
+
+    .back-link {
+      display: inline-block;
+      margin: 30px 0 18px;
+      color: var(--muted);
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      max-height: 75vh;
+      margin: 28px 0;
+      object-fit: contain;
+    }
+
+    .description {
+      max-width: 760px;
+      margin: 32px 0 48px;
+    }
+
+    .description p { color: var(--muted); }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 650px) {
+      header { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home"><img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40"></a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall Art</a>
+      <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
+      <a class="about-mobile-link" href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="wall-floor-art.html">← Back to Wall Art</a>
+    <h1>Can You Really See Me?</h1>
+    <div class="artwork-materials">Mixed media sculptural relief on board | 1000 × 1000 × 170 mm | Framed | Recessed lighting | Original 1/1</div>
+
+    <div class="artwork-status" data-status="AVAILABLE">
+      <img src="KK-star-only.svg" alt="" aria-hidden="true">
+      <span>AVAILABLE</span>
+      <span class="artwork-price-separator" aria-hidden="true">|</span>
+      <span class="artwork-price">$3200 AUD</span>
+    </div>
+
+    <a class="artwork-enquiry" href="mailto:kk.artspace.au@gmail.com?subject=Enquiry%20about%20Can%20You%20Really%20See%20Me">Enquire about this work</a>
+    <a class="artwork-enquiry" href="room-preview.html?artwork=can-you-really-see-me">See it in your space</a>
+
+    <img class="main-image image-viewer-trigger"
+         src="C.jpeg"
+         alt="Can You Really See Me?, full view">
+
+    <section class="description" aria-label="Artwork description">
+      <p>Can You Really See Me? explores the space between what we reveal to the world and what we keep hidden beneath the surface.</p>
+      <p>Layers of folded fabric create a sense of protection and concealment, while fractured, weathered surfaces suggest the marks left by life’s experiences. Subtle variations in texture, shadow and light reveal details that might otherwise go unnoticed.</p>
+      <p>The contrast between fragile, damaged edges and strong, flowing forms reflects the complex relationship between vulnerability and resilience.</p>
+      <p>This work invites the viewer to look beyond outward appearances, to question their first impressions and consider the experiences we cannot always see in others.</p>
+      <p>Sometimes, the most important parts of a person are the ones that remain hidden.</p>
+    </section>
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="image-viewer.js"></script>
+</body>
+</html>
