@@ -480,26 +480,26 @@
         const heightScale = hasWallHeight ? roomPhoto.clientHeight / wallHeightMm : Infinity;
         const scaleFactor = Math.min(widthScale, heightScale);
 
-          artworkWidth = actualWidthMm * scaleFactor;
-          artworkHeight = actualHeightMm * scaleFactor;
+        artworkWidth = actualWidthMm * scaleFactor;
+        artworkHeight = actualHeightMm * scaleFactor;
       } else {
-          artworkWidth = stage.clientWidth * 0.3 * sizePercent / 100;
-          artworkHeight = artworkWidth * artwork.actualHeightMm / artwork.actualWidthMm;
+        artworkWidth = stage.clientWidth * 0.3 * sizePercent / 100;
+        artworkHeight = artworkWidth * artwork.actualHeightMm / artwork.actualWidthMm;
       }
 
-        overlay.style.width = `${artworkWidth}px`;
-        overlay.style.height = `${artworkHeight}px`;
-        overlay.style.transform = `rotate(${rotation}deg)`;
-        sizeValue.value = `${sizePercent}%`;
-        rotationValue.value = `Orientation: ${rotation}°`;
-        positionArtwork();
+      overlay.style.width = `${artworkWidth}px`;
+      overlay.style.height = `${artworkHeight}px`;
+      overlay.style.transform = `rotate(${rotation}deg)`;
+      sizeValue.value = `${sizePercent}%`;
+      rotationValue.value = `Orientation: ${rotation}°`;
+      positionArtwork();
 
-        const displayedWidthMm = rotation % 180 === 0 ? actualWidthMm : actualHeightMm;
-        const displayedHeightMm = rotation % 180 === 0 ? actualHeightMm : actualWidthMm;
-        const roundedWidth = Math.round(displayedWidthMm / 10) * 10;
-        const roundedHeight = Math.round(displayedHeightMm / 10) * 10;
+      const displayedWidthMm = rotation % 180 === 0 ? actualWidthMm : actualHeightMm;
+      const displayedHeightMm = rotation % 180 === 0 ? actualHeightMm : actualWidthMm;
+      const roundedWidth = Math.round(displayedWidthMm / 10) * 10;
+      const roundedHeight = Math.round(displayedHeightMm / 10) * 10;
 
-        artworkDimensions.textContent =
+      artworkDimensions.textContent =
         `Actual artwork size at ${sizePercent}%: ${roundedWidth} mm × ${roundedHeight} mm`;
     }
 
