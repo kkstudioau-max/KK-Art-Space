@@ -540,8 +540,6 @@
     ]);
     const requestedArtwork = new URLSearchParams(window.location.search).get("artwork");
     const artwork = artworks.get(requestedArtwork) || artworks.get("the-stains-of-life");
-    artwork.actualWidthMm = artwork.width;
-    artwork.actualHeightMm = artwork.height;
 
     document.title = `See ${artwork.title} in Your Space | KK Art Space`;
     document.querySelector('meta[name="description"]').content =
@@ -551,77 +549,60 @@
     document.querySelector("#artwork-back-link").href = artwork.page;
     document.querySelector("#artwork-back-link").textContent = `← Back to ${artwork.title}`;
     document.querySelector("#preview-heading").textContent = `See ${artwork.title} in Your Space`;
-    document.querySelector("#artwork-overlay").setAttribute(
-      "aria-label",
-      `Move ${artwork.title} preview with the arrow keys`
-    );
-    document.querySelector("#artwork-dimensions").textContent =
-      `Actual artwork size at 100%: ${artwork.actualWidthMm} mm × ${artwork.actualHeightMm} mm`;
 
     const upload = document.querySelector("#room-upload");
     const controls = document.querySelector("#preview-controls");
     const stage = document.querySelector("#preview-stage");
     const roomPhoto = document.querySelector("#room-photo");
-    const overlay = document.querySelector("#artwork-overlay");
-    const sizeControl = document.querySelector("#artwork-size");
-    const sizeValue = document.querySelector("#size-value");
-    const rotateButton = document.querySelector("#rotate-artwork");
-    const rotationValue = document.querySelector("#rotation-value");
+    const overlayContainer = document.querySelector("#artwork-overlays");
+    const artworkSelectionList = document.querySelector("#artwork-selection-list");
+    const addArtworkSelect = document.querySelector("#add-artwork-select");
+    const addArtworkButton = document.querySelector("#add-artwork-button");
     const wallWidth = document.querySelector("#wall-width");
     const wallHeight = document.querySelector("#wall-height");
-    const artworkDimensions = document.querySelector("#artwork-dimensions");
     const status = document.querySelector("#preview-status");
     const sampleRoomButtons = Array.from(document.querySelectorAll(".sample-room"));
+    const maxArtworks = 3;
+    let nextOverlayId = 0;
 
     let roomPhotoUrl = "";
-    let xPosition = 0.5;
-    let yPosition = 0.5;
-    let rotation = 0;
-    let artworkWidth = 0;
-    let artworkHeight = 0;
-    let dragStart = null;
-
-    overlay.style.backgroundImage = `url("${artwork.image}")`;
-    overlay.style.aspectRatio = `${artwork.width} / ${artwork.height}`;
-    overlay.style.transformOrigin = "center";
-    overlay.setAttribute(
-      "aria-label",
-      `Move ${artwork.title} preview with the arrow keys; orientation ${rotation} degrees`
-    );
+    const previewArtworks = [];
 
     function clamp(value) {
       return Math.max(0, Math.min(1, value));
     }
 
-    function getVisualDimensions() {
-      return rotation % 180 === 0
-        ? { width: artworkWidth, height: artworkHeight }
-        : { width: artworkHeight, height: artworkWidth };
+    function getVisualDimensions(item) {
+      return item.rotation % 180 === 0
+        ? { width: item.width, height: item.height }
+        : { width: item.height, height: item.width };
     }
 
-    function getPositionBounds() {
-      const visualDimensions = getVisualDimensions();
+    function getPositionBounds(item) {
+      const visualDimensions = getVisualDimensions(item);
       return {
         maxX: Math.max(0, stage.clientWidth - visualDimensions.width),
         maxY: Math.max(0, stage.clientHeight - visualDimensions.height)
       };
     }
 
-    function positionArtwork() {
-      const { maxX, maxY } = getPositionBounds();
-      const visualDimensions = getVisualDimensions();
+    function positionArtwork(item) {
+      const { maxX, maxY } = getPositionBounds(item);
+      const visualDimensions = getVisualDimensions(item);
 
-      overlay.style.left = `${xPosition * maxX + (visualDimensions.width - artworkWidth) / 2}px`;
-      overlay.style.top = `${yPosition * maxY + (visualDimensions.height - artworkHeight) / 2}px`;
+      item.overlay.style.left =
+        `${item.xPosition * maxX + (visualDimensions.width - item.width) / 2}px`;
+      item.overlay.style.top =
+        `${item.yPosition * maxY + (visualDimensions.height - item.height) / 2}px`;
     }
 
-    function updateSize() {
+    function updateArtworkSize(item) {
       const wallWidthMm = Number(wallWidth.value);
       const wallHeightMm = Number(wallHeight.value);
-      const sizePercent = Number(sizeControl.value);
+      const sizePercent = item.sizePercent;
 
-      const actualWidthMm = artwork.actualWidthMm * sizePercent / 100;
-      const actualHeightMm = artwork.actualHeightMm * sizePercent / 100;
+      const actualWidthMm = item.artwork.width * sizePercent / 100;
+      const actualHeightMm = item.artwork.height * sizePercent / 100;
       const hasWallWidth = Number.isFinite(wallWidthMm) && wallWidthMm > 0 && roomPhoto.clientWidth > 0;
       const hasWallHeight = Number.isFinite(wallHeightMm) && wallHeightMm > 0 && roomPhoto.clientHeight > 0;
 
@@ -630,27 +611,228 @@
         const heightScale = hasWallHeight ? roomPhoto.clientHeight / wallHeightMm : Infinity;
         const scaleFactor = Math.min(widthScale, heightScale);
 
-        artworkWidth = actualWidthMm * scaleFactor;
-        artworkHeight = actualHeightMm * scaleFactor;
+        item.width = actualWidthMm * scaleFactor;
+        item.height = actualHeightMm * scaleFactor;
       } else {
-        artworkWidth = stage.clientWidth * 0.2 * sizePercent / 100;
-        artworkHeight = artworkWidth * artwork.actualHeightMm / artwork.actualWidthMm;
+        item.width = stage.clientWidth * 0.2 * sizePercent / 100;
+        item.height = item.width * item.artwork.height / item.artwork.width;
       }
 
-      overlay.style.width = `${artworkWidth}px`;
-      overlay.style.height = `${artworkHeight}px`;
-      overlay.style.transform = `rotate(${rotation}deg)`;
-      sizeValue.value = `${sizePercent}%`;
-      rotationValue.value = `Orientation: ${rotation}°`;
-      positionArtwork();
+      item.overlay.style.width = `${item.width}px`;
+      item.overlay.style.height = `${item.height}px`;
+      item.overlay.style.transform = `rotate(${item.rotation}deg)`;
+      item.sizeOutput.value = `${sizePercent}%`;
+      item.rotationOutput.value = `Orientation: ${item.rotation}°`;
+      positionArtwork(item);
 
-      const displayedWidthMm = rotation % 180 === 0 ? actualWidthMm : actualHeightMm;
-      const displayedHeightMm = rotation % 180 === 0 ? actualHeightMm : actualWidthMm;
+      const displayedWidthMm = item.rotation % 180 === 0 ? actualWidthMm : actualHeightMm;
+      const displayedHeightMm = item.rotation % 180 === 0 ? actualHeightMm : actualWidthMm;
       const roundedWidth = Math.round(displayedWidthMm / 10) * 10;
       const roundedHeight = Math.round(displayedHeightMm / 10) * 10;
 
-      artworkDimensions.textContent =
-        `Actual artwork size at ${sizePercent}%: ${roundedWidth} mm × ${roundedHeight} mm`;
+      item.dimensions.textContent =
+        `Actual size at ${sizePercent}%: ${roundedWidth} mm × ${roundedHeight} mm`;
+    }
+
+    function updateAllArtworkSizes() {
+      previewArtworks.forEach(updateArtworkSize);
+    }
+
+    function renderArtworkSelection() {
+      artworkSelectionList.replaceChildren();
+
+      previewArtworks.forEach((item) => {
+        const card = document.createElement("section");
+        card.className = "artwork-selection-card";
+        card.dataset.artworkId = item.id;
+
+        const heading = document.createElement("div");
+        heading.className = "artwork-selection-heading";
+
+        const title = document.createElement("h2");
+        title.textContent = item.artwork.title;
+        heading.append(title);
+
+        if (previewArtworks.length > 1) {
+          const removeButton = document.createElement("button");
+          removeButton.type = "button";
+          removeButton.textContent = "Remove";
+          removeButton.setAttribute("aria-label", `Remove ${item.artwork.title}`);
+          removeButton.addEventListener("click", () => {
+            item.overlay.remove();
+            previewArtworks.splice(previewArtworks.indexOf(item), 1);
+            renderArtworkSelection();
+            status.textContent = `${item.artwork.title} removed from the wall preview.`;
+          });
+          heading.append(removeButton);
+        }
+
+        const controlRow = document.createElement("div");
+        controlRow.className = "artwork-control-row";
+
+        const sizeLabel = document.createElement("label");
+        sizeLabel.textContent = "Art preview size";
+
+        const sizeInput = document.createElement("input");
+        sizeInput.type = "range";
+        sizeInput.min = "50";
+        sizeInput.max = "150";
+        sizeInput.step = "5";
+        sizeInput.value = String(item.sizePercent);
+        sizeInput.setAttribute("aria-label", `Art preview size for ${item.artwork.title}`);
+        sizeInput.addEventListener("input", () => {
+          item.sizePercent = Number(sizeInput.value);
+          updateArtworkSize(item);
+        });
+
+        const sizeOutput = document.createElement("output");
+        sizeOutput.value = `${item.sizePercent}%`;
+        sizeLabel.append(sizeInput, sizeOutput);
+        item.sizeOutput = sizeOutput;
+
+        const rotateButton = document.createElement("button");
+        rotateButton.type = "button";
+        rotateButton.textContent = "Rotate 90°";
+        rotateButton.setAttribute("aria-label", `Rotate ${item.artwork.title} clockwise 90 degrees`);
+        rotateButton.addEventListener("click", () => {
+          const { maxX, maxY } = getPositionBounds(item);
+          const currentDimensions = getVisualDimensions(item);
+          const centerX = item.xPosition * maxX + currentDimensions.width / 2;
+          const centerY = item.yPosition * maxY + currentDimensions.height / 2;
+
+          item.rotation = (item.rotation + 90) % 360;
+          updateArtworkSize(item);
+
+          const { maxX: nextMaxX, maxY: nextMaxY } = getPositionBounds(item);
+          const nextDimensions = getVisualDimensions(item);
+          item.xPosition = clamp((centerX - nextDimensions.width / 2) / (nextMaxX || 1));
+          item.yPosition = clamp((centerY - nextDimensions.height / 2) / (nextMaxY || 1));
+          positionArtwork(item);
+          item.overlay.setAttribute(
+            "aria-label",
+            `Move ${item.artwork.title} preview with the arrow keys; orientation ${item.rotation} degrees`
+          );
+        });
+
+        const rotationOutput = document.createElement("output");
+        rotationOutput.value = `Orientation: ${item.rotation}°`;
+
+        controlRow.append(sizeLabel, rotateButton, rotationOutput);
+
+        const dimensions = document.createElement("p");
+        dimensions.className = "artwork-dimensions";
+
+        card.append(heading, controlRow, dimensions);
+        artworkSelectionList.append(card);
+        item.dimensions = dimensions;
+      });
+
+      const selectedIds = new Set(previewArtworks.map((item) => item.id));
+      addArtworkSelect.replaceChildren(new Option("Choose an artwork", ""));
+      artworks.forEach((candidate, id) => {
+        if (selectedIds.has(id)) return;
+        addArtworkSelect.add(new Option(candidate.title, id));
+      });
+
+      const atLimit = previewArtworks.length >= maxArtworks;
+      addArtworkSelect.disabled = atLimit;
+      addArtworkButton.disabled = atLimit || !addArtworkSelect.value;
+      addArtworkSelect.setAttribute(
+        "aria-describedby",
+        atLimit ? "artwork-selection-limit" : ""
+      );
+    }
+
+    function createArtworkOverlay(item) {
+      const overlay = document.createElement("button");
+      overlay.className = "artwork-overlay";
+      overlay.type = "button";
+      overlay.style.backgroundImage = `url("${item.artwork.image}")`;
+      overlay.style.aspectRatio = `${item.artwork.width} / ${item.artwork.height}`;
+      overlay.style.transformOrigin = "center";
+      overlay.setAttribute(
+        "aria-label",
+        `Move ${item.artwork.title} preview with the arrow keys; orientation ${item.rotation} degrees`
+      );
+      item.overlay = overlay;
+
+      overlay.addEventListener("pointerdown", (event) => {
+        event.preventDefault();
+        overlay.focus();
+        overlay.setPointerCapture(event.pointerId);
+        item.dragStart = {
+          pointerId: event.pointerId,
+          x: event.clientX,
+          y: event.clientY,
+          xPosition: item.xPosition,
+          yPosition: item.yPosition
+        };
+      });
+
+      overlay.addEventListener("pointermove", (event) => {
+        if (!item.dragStart || item.dragStart.pointerId !== event.pointerId) return;
+
+        const { maxX, maxY } = getPositionBounds(item);
+        const xRange = maxX || 1;
+        const yRange = maxY || 1;
+
+        item.xPosition = clamp(
+          item.dragStart.xPosition + (event.clientX - item.dragStart.x) / xRange
+        );
+        item.yPosition = clamp(
+          item.dragStart.yPosition + (event.clientY - item.dragStart.y) / yRange
+        );
+        positionArtwork(item);
+      });
+
+      const endDrag = () => {
+        item.dragStart = null;
+      };
+
+      overlay.addEventListener("pointerup", endDrag);
+      overlay.addEventListener("pointercancel", endDrag);
+      overlay.addEventListener("keydown", (event) => {
+        const step = event.shiftKey ? 0.05 : 0.015;
+        if (event.key === "ArrowLeft") item.xPosition -= step;
+        else if (event.key === "ArrowRight") item.xPosition += step;
+        else if (event.key === "ArrowUp") item.yPosition -= step;
+        else if (event.key === "ArrowDown") item.yPosition += step;
+        else return;
+
+        event.preventDefault();
+        item.xPosition = clamp(item.xPosition);
+        item.yPosition = clamp(item.yPosition);
+        positionArtwork(item);
+      });
+
+      overlayContainer.append(overlay);
+    }
+
+    function addArtwork(id, position = 0.5) {
+      if (previewArtworks.length >= maxArtworks || previewArtworks.some((item) => item.id === id)) return;
+      const selectedArtwork = artworks.get(id);
+      if (!selectedArtwork) return;
+
+      const item = {
+        id,
+        artwork: selectedArtwork,
+        xPosition: position,
+        yPosition: 0.5,
+        rotation: 0,
+        sizePercent: 100,
+        width: 0,
+        height: 0,
+        overlay: null,
+        sizeOutput: null,
+        rotationOutput: null,
+        dimensions: null,
+        dragStart: null
+      };
+
+      previewArtworks.push(item);
+      createArtworkOverlay(item);
+      renderArtworkSelection();
+      updateArtworkSize(item);
     }
 
     function loadRoomPhoto(source, name, objectUrl = "") {
@@ -659,10 +841,17 @@
         roomPhotoUrl = objectUrl;
         stage.hidden = false;
         controls.style.display = "block";
-        xPosition = 0.5;
-        yPosition = 0.5;
-        updateSize();
-        status.textContent = `${name} loaded. Position ${artwork.title} on your wall.`;
+        const defaultPositions = previewArtworks.length === 1
+          ? [0.5]
+          : previewArtworks.length === 2
+            ? [0.32, 0.68]
+            : [0.2, 0.5, 0.8];
+        previewArtworks.forEach((item, index) => {
+          item.xPosition = defaultPositions[index];
+          item.yPosition = 0.5;
+        });
+        updateAllArtworkSizes();
+        status.textContent = `${name} loaded. Position the selected artwork previews on your wall.`;
       };
 
       roomPhoto.onerror = () => {
@@ -697,76 +886,27 @@
       });
     });
 
-    sizeControl.addEventListener("input", updateSize);
-    wallWidth.addEventListener("input", updateSize);
-    wallHeight.addEventListener("input", updateSize);
-    rotateButton.addEventListener("click", () => {
-      const { maxX, maxY } = getPositionBounds();
-      const currentDimensions = getVisualDimensions();
-      const centerX = xPosition * maxX + currentDimensions.width / 2;
-      const centerY = yPosition * maxY + currentDimensions.height / 2;
-
-      rotation = (rotation + 90) % 360;
-      updateSize();
-
-      const { maxX: nextMaxX, maxY: nextMaxY } = getPositionBounds();
-      const nextDimensions = getVisualDimensions();
-      xPosition = clamp((centerX - nextDimensions.width / 2) / (nextMaxX || 1));
-      yPosition = clamp((centerY - nextDimensions.height / 2) / (nextMaxY || 1));
-      positionArtwork();
-      overlay.setAttribute(
-        "aria-label",
-        `Move ${artwork.title} preview with the arrow keys; orientation ${rotation} degrees`
-      );
+    addArtworkSelect.addEventListener("change", () => {
+      addArtworkButton.disabled =
+        previewArtworks.length >= maxArtworks || !addArtworkSelect.value;
     });
 
-    overlay.addEventListener("pointerdown", (event) => {
-      event.preventDefault();
-      overlay.focus();
-      overlay.setPointerCapture(event.pointerId);
-      dragStart = {
-        pointerId: event.pointerId,
-        x: event.clientX,
-        y: event.clientY,
-        xPosition,
-        yPosition
-      };
+    addArtworkButton.addEventListener("click", () => {
+      const id = addArtworkSelect.value;
+      if (!id) return;
+      const position = previewArtworks.length === 1 ? 0.68 : 0.2;
+      addArtwork(id, position);
+      status.textContent = `${artworks.get(id).title} added. Position it on your wall.`;
     });
 
-    overlay.addEventListener("pointermove", (event) => {
-      if (!dragStart || dragStart.pointerId !== event.pointerId) return;
+    wallWidth.addEventListener("input", updateAllArtworkSizes);
+    wallHeight.addEventListener("input", updateAllArtworkSizes);
 
-      const { maxX, maxY } = getPositionBounds();
-      const xRange = maxX || 1;
-      const yRange = maxY || 1;
-
-      xPosition = clamp(dragStart.xPosition + (event.clientX - dragStart.x) / xRange);
-      yPosition = clamp(dragStart.yPosition + (event.clientY - dragStart.y) / yRange);
-      positionArtwork();
-    });
-
-    function endDrag() {
-      dragStart = null;
-    }
-
-    overlay.addEventListener("pointerup", endDrag);
-    overlay.addEventListener("pointercancel", endDrag);
-
-    overlay.addEventListener("keydown", (event) => {
-      const step = event.shiftKey ? 0.05 : 0.015;
-      if (event.key === "ArrowLeft") xPosition -= step;
-      else if (event.key === "ArrowRight") xPosition += step;
-      else if (event.key === "ArrowUp") yPosition -= step;
-      else if (event.key === "ArrowDown") yPosition += step;
-      else return;
-
-      event.preventDefault();
-      xPosition = clamp(xPosition);
-      yPosition = clamp(yPosition);
-      positionArtwork();
-    });
-
- new ResizeObserver(updateSize).observe(stage);
+    addArtwork(requestedArtwork && artworks.has(requestedArtwork)
+      ? requestedArtwork
+      : "the-stains-of-life");
+    renderArtworkSelection();
+    new ResizeObserver(updateAllArtworkSizes).observe(stage);
 
     window.addEventListener("beforeunload", () => {
       if (roomPhotoUrl) URL.revokeObjectURL(roomPhotoUrl);
