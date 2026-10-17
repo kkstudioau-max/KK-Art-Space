@@ -235,35 +235,6 @@
       min-width: 0;
     }
 
-    .rotation-control {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .rotation-control button {
-      padding: 8px 14px;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      background: #fff;
-      color: var(--ink);
-      font: inherit;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .rotation-control button:focus-visible {
-      outline: 2px solid #716d61;
-      outline-offset: 3px;
-    }
-
-    #rotation-value {
-      color: var(--muted);
-      font-size: .95rem;
-      font-weight: 700;
-    }
-
     .measurement-group {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -325,6 +296,16 @@
       background-size: contain;
       cursor: move;
       touch-action: none;
+    }
+
+    .artwork-overlays {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .artwork-overlays .artwork-overlay {
+      pointer-events: auto;
     }
 
     .artwork-overlay:focus-visible {
@@ -406,6 +387,7 @@
         <option value="">Choose an artwork</option>
       </select>
       <button id="add-artwork-button" type="button">Add artwork</button>
+      <p id="artwork-selection-limit" hidden>You can preview up to 3 artworks at once.</p>
     </div>
 
     <div class="measurement-group">
@@ -716,6 +698,7 @@
 
         const rotationOutput = document.createElement("output");
         rotationOutput.value = `Orientation: ${item.rotation}°`;
+        item.rotationOutput = rotationOutput;
 
         controlRow.append(sizeLabel, rotateButton, rotationOutput);
 
@@ -741,6 +724,7 @@
         "aria-describedby",
         atLimit ? "artwork-selection-limit" : ""
       );
+      document.querySelector("#artwork-selection-limit").hidden = !atLimit;
     }
 
     function createArtworkOverlay(item) {
