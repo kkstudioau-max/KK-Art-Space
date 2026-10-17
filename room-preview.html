@@ -708,6 +708,7 @@
         card.append(heading, controlRow, dimensions);
         artworkSelectionList.append(card);
         item.dimensions = dimensions;
+        updateArtworkSize(item);
       });
 
       const selectedIds = new Set(previewArtworks.map((item) => item.id));
@@ -816,7 +817,6 @@
       previewArtworks.push(item);
       createArtworkOverlay(item);
       renderArtworkSelection();
-      updateArtworkSize(item);
     }
 
     function loadRoomPhoto(source, name, objectUrl = "") {
