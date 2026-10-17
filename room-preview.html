@@ -342,7 +342,7 @@
              inputmode="numeric" placeholder="For example, 2400">
     </label>
   </div>
-  <p>Measure the full wall width and height in the photo. A straight-on photo gives a better estimate.</p>
+  <p>For a more accurate scale, enter the wall width and/or height shown in the photo. Without measurements, the artwork size is an estimate.</p>
   <p class="artwork-dimensions" id="artwork-dimensions" aria-live="polite">
     Actual artwork size at 100%: 900 mm × 600 mm
   </p>
@@ -559,7 +559,7 @@
         artworkWidth = actualWidthMm * scaleFactor;
         artworkHeight = actualHeightMm * scaleFactor;
       } else {
-        artworkWidth = stage.clientWidth * 0.3 * sizePercent / 100;
+        artworkWidth = stage.clientWidth * 0.2 * sizePercent / 100;
         artworkHeight = artworkWidth * artwork.actualHeightMm / artwork.actualWidthMm;
       }
 
