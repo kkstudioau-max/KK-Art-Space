@@ -136,22 +136,103 @@
       max-width: 620px;
     }
 
-    .controls label[for="artwork-size"] {
+    .artwork-selection-list {
       display: grid;
+      gap: 12px;
+      max-width: 620px;
+      margin-bottom: 20px;
+    }
+
+    .artwork-selection-card {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .artwork-selection-heading,
+    .artwork-control-row,
+    .add-artwork-control {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
       gap: 10px;
-      max-width: 420px;
+    }
+
+    .artwork-selection-heading {
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .artwork-selection-heading h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .artwork-selection-card label {
+      display: grid;
+      flex: 1 1 180px;
+      gap: 6px;
       font-weight: 700;
     }
 
-    #artwork-size {
+    .artwork-selection-card input[type="range"] {
       width: 100%;
       accent-color: var(--ink);
     }
 
-    #size-value {
-      font-size: .95rem;
+    .artwork-selection-card output,
+    .artwork-selection-card .artwork-dimensions {
       color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .artwork-selection-card .artwork-dimensions {
+      margin: 8px 0 0;
+    }
+
+    .artwork-selection-card button,
+    .add-artwork-control button,
+    .add-artwork-control select {
+      min-height: 40px;
+      padding: 7px 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+    }
+
+    .artwork-selection-card button,
+    .add-artwork-control button {
+      cursor: pointer;
+    }
+
+    .artwork-selection-card button:disabled,
+    .add-artwork-control button:disabled {
+      cursor: not-allowed;
+      opacity: .55;
+    }
+
+    .artwork-selection-card button:focus-visible,
+    .add-artwork-control button:focus-visible,
+    .add-artwork-control select:focus-visible {
+      outline: 2px solid #716d61;
+      outline-offset: 3px;
+    }
+
+    .add-artwork-control {
+      max-width: 620px;
+    }
+
+    .add-artwork-control label {
+      flex: 1 1 100%;
       font-weight: 700;
+    }
+
+    .add-artwork-control select {
+      flex: 1 1 220px;
+      min-width: 0;
     }
 
     .rotation-control {
@@ -318,15 +399,13 @@
     </section>
 
     <div class="controls" id="preview-controls">
-  <label for="artwork-size">
-  Art preview size
-  <input id="artwork-size" type="range" min="50" max="150" step="5" value="100">
-  <output id="size-value" for="artwork-size">100%</output>
-</label>
-
-    <div class="rotation-control">
-      <button id="rotate-artwork" type="button" aria-label="Rotate artwork clockwise 90 degrees">Rotate artwork 90°</button>
-      <output id="rotation-value" aria-live="polite">Orientation: 0°</output>
+    <div class="artwork-selection-list" id="artwork-selection-list"></div>
+    <div class="add-artwork-control">
+      <label for="add-artwork-select">Add another artwork (up to 3)</label>
+      <select id="add-artwork-select">
+        <option value="">Choose an artwork</option>
+      </select>
+      <button id="add-artwork-button" type="button">Add artwork</button>
     </div>
 
     <div class="measurement-group">
@@ -343,17 +422,12 @@
     </label>
   </div>
   <p>For a more accurate scale, enter the wall width and/or height shown in the photo. Without measurements, the artwork size is an estimate.</p>
-  <p class="artwork-dimensions" id="artwork-dimensions" aria-live="polite">
-    Actual artwork size at 100%: 900 mm × 600 mm
-  </p>
-
-  <p>Drag the artwork to position it. You can also focus it and use the arrow keys.</p>
+  <p>Drag each artwork preview to position it. Focus a preview and use the arrow keys for fine positioning.</p>
 </div>
 
     <div class="stage" id="preview-stage" hidden>
       <img class="room-photo" id="room-photo" alt="Your selected room">
-      <button class="artwork-overlay" id="artwork-overlay" type="button"
-              aria-label="Move The Stains of Life preview with the arrow keys"></button>
+      <div class="artwork-overlays" id="artwork-overlays" aria-label="Artwork previews"></div>
     </div>
 
     <p class="status" id="preview-status" role="status" aria-live="polite">
