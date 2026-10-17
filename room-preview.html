@@ -416,6 +416,8 @@
     const overlay = document.querySelector("#artwork-overlay");
     const sizeControl = document.querySelector("#artwork-size");
     const sizeValue = document.querySelector("#size-value");
+    const rotateButton = document.querySelector("#rotate-artwork");
+    const rotationValue = document.querySelector("#rotation-value");
     const wallWidth = document.querySelector("#wall-width");
     const wallHeight = document.querySelector("#wall-height");
     const artworkDimensions = document.querySelector("#artwork-dimensions");
@@ -424,27 +426,43 @@
     let roomPhotoUrl = "";
     let xPosition = 0.5;
     let yPosition = 0.5;
+    let rotation = 0;
+    let artworkWidth = 0;
+    let artworkHeight = 0;
     let dragStart = null;
 
     overlay.style.backgroundImage = `url("${artwork.image}")`;
     overlay.style.aspectRatio = `${artwork.width} / ${artwork.height}`;
+    overlay.style.transformOrigin = "center";
+    overlay.setAttribute(
+      "aria-label",
+      `Move ${artwork.title} preview with the arrow keys; orientation ${rotation} degrees`
+    );
 
     function clamp(value) {
       return Math.max(0, Math.min(1, value));
     }
 
+    function getVisualDimensions() {
+      return rotation % 180 === 0
+        ? { width: artworkWidth, height: artworkHeight }
+        : { width: artworkHeight, height: artworkWidth };
+    }
+
     function getPositionBounds() {
+      const visualDimensions = getVisualDimensions();
       return {
-        maxX: Math.max(0, stage.clientWidth - overlay.offsetWidth),
-        maxY: Math.max(0, stage.clientHeight - overlay.offsetHeight)
+        maxX: Math.max(0, stage.clientWidth - visualDimensions.width),
+        maxY: Math.max(0, stage.clientHeight - visualDimensions.height)
       };
     }
 
     function positionArtwork() {
       const { maxX, maxY } = getPositionBounds();
+      const visualDimensions = getVisualDimensions();
 
-      overlay.style.left = `${xPosition * maxX}px`;
-      overlay.style.top = `${yPosition * maxY}px`;
+      overlay.style.left = `${xPosition * maxX + (visualDimensions.width - artworkWidth) / 2}px`;
+      overlay.style.top = `${yPosition * maxY + (visualDimensions.height - artworkHeight) / 2}px`;
     }
 
     function updateSize() {
@@ -462,20 +480,26 @@
         const heightScale = hasWallHeight ? roomPhoto.clientHeight / wallHeightMm : Infinity;
         const scaleFactor = Math.min(widthScale, heightScale);
 
-        overlay.style.width = `${actualWidthMm * scaleFactor}px`;
-        overlay.style.height = `${actualHeightMm * scaleFactor}px`;
+          artworkWidth = actualWidthMm * scaleFactor;
+          artworkHeight = actualHeightMm * scaleFactor;
       } else {
-        overlay.style.width = `${30 * sizePercent / 100}%`;
-        overlay.style.height = "auto";
+          artworkWidth = stage.clientWidth * 0.3 * sizePercent / 100;
+          artworkHeight = artworkWidth * artwork.actualHeightMm / artwork.actualWidthMm;
       }
 
-      sizeValue.value = `${sizePercent}%`;
-      positionArtwork();
+        overlay.style.width = `${artworkWidth}px`;
+        overlay.style.height = `${artworkHeight}px`;
+        overlay.style.transform = `rotate(${rotation}deg)`;
+        sizeValue.value = `${sizePercent}%`;
+        rotationValue.value = `Orientation: ${rotation}°`;
+        positionArtwork();
 
-      const roundedWidth = Math.round(actualWidthMm / 10) * 10;
-      const roundedHeight = Math.round(actualHeightMm / 10) * 10;
+        const displayedWidthMm = rotation % 180 === 0 ? actualWidthMm : actualHeightMm;
+        const displayedHeightMm = rotation % 180 === 0 ? actualHeightMm : actualWidthMm;
+        const roundedWidth = Math.round(displayedWidthMm / 10) * 10;
+        const roundedHeight = Math.round(displayedHeightMm / 10) * 10;
 
-      artworkDimensions.textContent =
+        artworkDimensions.textContent =
         `Actual artwork size at ${sizePercent}%: ${roundedWidth} mm × ${roundedHeight} mm`;
     }
 
@@ -511,6 +535,25 @@
     sizeControl.addEventListener("input", updateSize);
     wallWidth.addEventListener("input", updateSize);
     wallHeight.addEventListener("input", updateSize);
+    rotateButton.addEventListener("click", () => {
+      const { maxX, maxY } = getPositionBounds();
+      const currentDimensions = getVisualDimensions();
+      const centerX = xPosition * maxX + currentDimensions.width / 2;
+      const centerY = yPosition * maxY + currentDimensions.height / 2;
+
+      rotation = (rotation + 90) % 360;
+      updateSize();
+
+      const { maxX: nextMaxX, maxY: nextMaxY } = getPositionBounds();
+      const nextDimensions = getVisualDimensions();
+      xPosition = clamp((centerX - nextDimensions.width / 2) / (nextMaxX || 1));
+      yPosition = clamp((centerY - nextDimensions.height / 2) / (nextMaxY || 1));
+      positionArtwork();
+      overlay.setAttribute(
+        "aria-label",
+        `Move ${artwork.title} preview with the arrow keys; orientation ${rotation} degrees`
+      );
+    });
 
     overlay.addEventListener("pointerdown", (event) => {
       event.preventDefault();
