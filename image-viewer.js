@@ -29,6 +29,7 @@ document.addEventListener("click", (event) => {
     closeButton.setAttribute("aria-label", "Close full-size image");
 
     closeButton.addEventListener("click", () => viewer.close());
+    fullSizeImage.addEventListener("click", () => viewer.close());
     viewer.addEventListener("click", (dialogEvent) => {
       if (dialogEvent.target === viewer) viewer.close();
     });
