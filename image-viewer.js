@@ -43,3 +43,10 @@ document.addEventListener("click", (event) => {
   fullSizeImage.alt = image.alt;
   viewer.showModal();
 });
+
+document.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+
+  const viewer = document.querySelector(".image-viewer[open]");
+  if (viewer) viewer.close();
+});
