@@ -1,7 +1,8 @@
 document.addEventListener("click", (event) => {
-  if (!(event.target instanceof HTMLImageElement)) return;
+  if (!(event.target instanceof HTMLImageElement) || !event.target.matches(".image-viewer-trigger")) return;
 
   const image = event.target;
+  if (image.closest(".image-viewer")) return;
   const link = image.closest("a");
 
   // Let modified clicks keep their normal browser behavior.
