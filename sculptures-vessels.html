@@ -225,6 +225,31 @@
 .category-section {
   padding: 14px 0 72px;
 }
+
+.category-section + .category-section {
+  padding-top: 40px;
+  border-top: 1px solid var(--line);
+}
+
+.boston-intro {
+  max-width: 760px;
+  margin: 0 0 22px;
+  color: var(--muted);
+}
+
+.boston-hero-placeholder {
+  max-width: 760px;
+  aspect-ratio: 16 / 7;
+  min-height: 220px;
+  margin-bottom: 14px;
+}
+
+.coming-soon {
+  margin: 0;
+  color: var(--muted);
+  font-size: .9rem;
+  font-style: italic;
+}
 .artwork-link {
   display: block;
   color: inherit;
@@ -254,83 +279,106 @@
   </header>
   
     <main>
-  <section class="category-section" id="sculptures-vessels" aria-labelledby="artworks-title">
+  <div class="section-heading">
+    <h2>Sculptures &amp; Vessels</h2>
+    <p>Original, one of a kind pieces</p>
+  </div>
+
+  <section class="category-section" id="ash-collection" aria-labelledby="ash-title">
     <div class="section-heading">
-      <h2 id="artworks-title">Sculptures &amp; Vessels</h2>
-      <p>Original, one of a kind pieces</p>
+      <h2 id="ash-title">The Ash Collection</h2>
     </div>
     <div class="gallery">
-  <article class="artwork">
-    <a class="artwork-link" href="caldera-relic.html">
-      <img class="artwork-image" src="Caldera-relic-1.jpeg" alt="Caldera Relic, sculptural vessel">
-      <h3>Caldera Relic</h3>
-    </a>
-    <p>Mixed media sculptural vessel | 300 × 230 mm | Original 1/1</p>
-  </article>
       <article class="artwork">
-  <a class="artwork-link" href="jasper-hollow.html">
-    <img class="artwork-image" src="Jasper-1.jpeg" alt="Jasper Hollow, mixed-media sculpture">
-    <h3>Jasper Hollow</h3>
-  </a>
-  <p>Mixed media sculpture | 390 × 240 × 190 mm | Original 1/1</p>
-</article>
+        <a class="artwork-link" href="ash-reliquary.html">
+          <img class="artwork-image" src="Ash-reliquary-1.jpeg" alt="Ash Reliquary, mixed-media vessel">
+          <h3>Ash Reliquary</h3>
+        </a>
+        <p>Mixed media | 160 mm diameter × 200 mm high | Original 1/1</p>
+      </article>
       <article class="artwork">
-  <a class="artwork-link" href="sutured-basin.html">
-    <img class="artwork-image" src="Sutured%20Basin/Sutured-basin-1.jpeg" alt="Sutured Basin, mixed-media vessel">
-    <h3>Sutured Basin</h3>
-  </a>
-  <p>Mixed media | 380 mm diameter × 50 mm high | Original 1/1</p>
-</article>
+        <a class="artwork-link" href="ash-basin.html">
+          <img class="artwork-image" src="Ash-basin-1.jpeg" alt="Ash Basin, mixed-media sculptural vessel">
+          <h3>Ash Basin</h3>
+        </a>
+        <p>Mixed media | 300 mm diameter × 100 mm high | Original 1/1</p>
+      </article>
       <article class="artwork">
-  <a class="artwork-link" href="ash-reliquary.html">
-    <img class="artwork-image" src="Ash-reliquary-1.jpeg" alt="Ash Reliquary, mixed-media vessel">
-    <h3>Ash Reliquary</h3>
-  </a>
-  <p>Mixed media | 160 mm diameter × 200 mm high | Original 1/1</p>
-</article>
+        <a class="artwork-link" href="ash-vessel.html">
+          <img class="artwork-image" src="Ash%20Vessel/Ash-vessel-1.jpg" alt="Ash Vessel, sculptural bowl">
+          <h3>Ash Vessel</h3>
+        </a>
+        <p>Mixed-media vessel | 140 mm diameter × 85 mm high | Original 1/1 | Available · $95 AUD</p>
+      </article>
       <article class="artwork">
-  <a class="artwork-link" href="ash-basin.html">
-    <img class="artwork-image" src="Ash-basin-1.jpeg" alt="Ash Basin, mixed-media sculptural vessel">
-    <h3>Ash Basin</h3>
-  </a>
-  <p>Mixed media | 300 mm diameter × 100 mm high | Original 1/1</p>
-</article>
+        <a class="artwork-link" href="ash-relic.html">
+          <img class="artwork-image" src="Ash%20Relic/Ash-relic-1.jpg" alt="Ash Relic, sculptural vessel">
+          <h3>Ash Relic</h3>
+        </a>
+        <p>Mixed media sculptural vessel | 370 mm diameter × 30 mm high | Original 1/1</p>
+      </article>
       <article class="artwork">
-  <a class="artwork-link" href="ash-vessel.html">
-    <img class="artwork-image" src="Ash%20Vessel/Ash-vessel-1.jpg" alt="Ash Vessel, sculptural bowl">
-    <h3>Ash Vessel</h3>
-  </a>
-  <p>Mixed-media vessel | 140 mm diameter × 85 mm high | Original 1/1 | Available · $95 AUD</p>
-</article>
+        <a class="artwork-link" href="cinder-vessel.html">
+          <img class="artwork-image" src="Cinder_Vessel/Cinder-vessel-1.jpeg" alt="Cinder Vessel, sculptural vessel">
+          <h3>Cinder Vessel</h3>
+        </a>
+        <p>Mixed media sculptural vessel | 160 mm diameter × 160 mm high | Original 1/1</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="category-section" id="boston-collection" aria-labelledby="boston-title">
+    <div class="section-heading">
+      <h2 id="boston-title">The Boston Collection</h2>
+    </div>
+    <p class="boston-intro">An exploration of organic forms, weathered surfaces and the quiet beauty of imperfection. Discover individually handcrafted sculptural objects, curated pairings and inspiration for creating your own arrangements.</p>
+    <div class="artwork-placeholder boston-hero-placeholder" role="img" aria-label="Boston Collection hero photograph coming soon">
+      <span>Boston Collection hero photograph coming soon</span>
+    </div>
+    <p class="coming-soon">Boston Collection landing page coming soon</p>
+  </section>
+
+  <section class="category-section" id="individual-sculptures" aria-labelledby="individual-title">
+    <div class="section-heading">
+      <h2 id="individual-title">Individual Sculptures</h2>
+    </div>
+    <div class="gallery">
       <article class="artwork">
-  <a class="artwork-link" href="ash-relic.html">
-    <img class="artwork-image" src="Ash%20Relic/Ash-relic-1.jpg" alt="Ash Relic, sculptural vessel">
-    <h3>Ash Relic</h3>
-  </a>
-  <p>Mixed media sculptural vessel | 370 mm diameter × 30 mm high | Original 1/1</p>
-</article>
+        <a class="artwork-link" href="caldera-relic.html">
+          <img class="artwork-image" src="Caldera-relic-1.jpeg" alt="Caldera Relic, sculptural vessel">
+          <h3>Caldera Relic</h3>
+        </a>
+        <p>Mixed media sculptural vessel | 300 × 230 mm | Original 1/1</p>
+      </article>
       <article class="artwork">
-  <a class="artwork-link" href="cinder-vessel.html">
-    <img class="artwork-image" src="Cinder_Vessel/Cinder-vessel-1.jpeg" alt="Cinder Vessel, sculptural vessel">
-    <h3>Cinder Vessel</h3>
-  </a>
-  <p>Mixed media sculptural vessel | 160 mm diameter × 160 mm high | Original 1/1</p>
-</article>
+        <a class="artwork-link" href="jasper-hollow.html">
+          <img class="artwork-image" src="Jasper-1.jpeg" alt="Jasper Hollow, mixed-media sculpture">
+          <h3>Jasper Hollow</h3>
+        </a>
+        <p>Mixed media sculpture | 390 × 240 × 190 mm | Original 1/1</p>
+      </article>
       <article class="artwork">
-  <a class="artwork-link" href="at-what-cost.html">
-    <img class="artwork-image" src="At-what-cost/At-what-cost-1.jpeg" alt="At What Cost?, sculptural vessel">
-    <h3>At What Cost?</h3>
-  </a>
-  <p>Mixed media sculptural vessel | 270 mm diameter | Original 1/1</p>
-</article>
+        <a class="artwork-link" href="sutured-basin.html">
+          <img class="artwork-image" src="Sutured%20Basin/Sutured-basin-1.jpeg" alt="Sutured Basin, mixed-media vessel">
+          <h3>Sutured Basin</h3>
+        </a>
+        <p>Mixed media | 380 mm diameter × 50 mm high | Original 1/1</p>
+      </article>
       <article class="artwork">
-  <a class="artwork-link" href="enough.html">
-    <img class="artwork-image" src="Enough/Enough-1.jpeg" alt="Enough?, mixed-media glass bottle sculpture">
-    <h3>Enough?</h3>
-  </a>
-  <p>Mixed media on glass bottle, plaster, handwritten paper, wax and aged finishes | 230 mm (H) × 100 mm (W) × 40 mm (D) | Original 1/1 | Available · $95 AUD</p>
-</article>
-</div>
+        <a class="artwork-link" href="at-what-cost.html">
+          <img class="artwork-image" src="At-what-cost/At-what-cost-1.jpeg" alt="At What Cost?, sculptural vessel">
+          <h3>At What Cost?</h3>
+        </a>
+        <p>Mixed media sculptural vessel | 270 mm diameter | Original 1/1</p>
+      </article>
+      <article class="artwork">
+        <a class="artwork-link" href="enough.html">
+          <img class="artwork-image" src="Enough/Enough-1.jpeg" alt="Enough?, mixed-media glass bottle sculpture">
+          <h3>Enough?</h3>
+        </a>
+        <p>Mixed media on glass bottle, plaster, handwritten paper, wax and aged finishes | 230 mm (H) × 100 mm (W) × 40 mm (D) | Original 1/1 | Available · $95 AUD</p>
+      </article>
+    </div>
   </section>
 
   </main>
