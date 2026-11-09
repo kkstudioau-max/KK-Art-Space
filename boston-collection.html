@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore The Boston Collection by KK Art Space: individually handcrafted sculptural objects, curated pairings and inspiration for creating your own arrangements.">
+  <title>The Boston Collection | KK Art Space</title>
+  <link rel="canonical" href="https://kkartspace.com.au/boston-collection.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+      --accent: #716d61;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    nav a {
+      margin-left: 24px;
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    nav a:hover, .collection-link:hover { color: var(--ink); }
+
+    .intro {
+      max-width: 760px;
+      padding: 76px 0 48px;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.7rem, 7vw, 5rem);
+      letter-spacing: -.045em;
+      line-height: 1.05;
+    }
+
+    .subtitle {
+      margin: 0 0 24px;
+      color: var(--accent);
+      font-size: .9rem;
+      letter-spacing: .04em;
+    }
+
+    .intro p, .collection-intro p {
+      max-width: 700px;
+      color: var(--muted);
+    }
+
+    .collection-note {
+      max-width: 760px;
+      margin: 0 0 48px;
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .collection-note p { margin: 0; }
+
+    .collection-section {
+      padding: 40px 0 56px;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .artwork-placeholder {
+      display: grid;
+      min-height: 300px;
+      place-items: center;
+      padding: 24px;
+      border: 1px dashed #c9c6bc;
+      background: #eeece6;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .artwork-placeholder span {
+      max-width: 220px;
+      font-size: .9rem;
+    }
+
+    .artwork h3 {
+      margin: 12px 0 2px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .artwork p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .pairing-includes {
+      margin: 0 0 8px;
+    }
+
+    .pairing-price {
+      margin-bottom: 10px !important;
+      color: var(--ink) !important;
+      font-weight: 600;
+    }
+
+    .coming-soon {
+      margin-top: 10px !important;
+      font-style: italic;
+    }
+
+    .inspiration-gallery {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    }
+
+    .inspiration-gallery .artwork-placeholder {
+      min-height: 260px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 22px;
+      color: var(--muted);
+      text-underline-offset: 4px;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 700px) {
+      header { align-items: flex-start; }
+      nav a { margin-left: 14px; }
+      .intro { padding: 58px 0 36px; }
+      .collection-section { padding: 32px 0 44px; }
+      .gallery { grid-template-columns: 1fr; gap: 28px; }
+      .artwork-placeholder { min-height: 340px; }
+      .inspiration-gallery { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home"><img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40"></a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall Art</a>
+      <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
+      <a class="about-mobile-link" href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">The Boston Collection</h1>
+      <p class="subtitle">Sculptural objects | Weathered forms | Curated arrangements</p>
+      <p>An exploration of organic forms, tactile surfaces and the understated beauty of objects that appear to have lived another life.</p>
+      <p>Individually handcrafted using mixed media techniques, each piece embraces the irregularities, subtle variations and distinctive character of its making.</p>
+      <p>Discover individual sculptures, thoughtfully curated pairings and inspiration for creating your own arrangements.</p>
+    </section>
+
+    <aside class="collection-note">
+      <p>Customers may purchase individual sculptures, select a curated pairing or get in touch to enquire about creating their own combination.</p>
+    </aside>
+
+    <section class="collection-section" id="individual-sculptures" aria-labelledby="individual-title">
+      <div class="section-heading">
+        <h2 id="individual-title">Individual Sculptures</h2>
+      </div>
+      <div class="gallery">
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-001 Original Plate photograph coming soon">
+            <span>BOS-001 · Original Plate<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-001 · Original Plate</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-002 Original Large Bowl photograph coming soon">
+            <span>BOS-002 · Original Large Bowl<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-002 · Original Large Bowl</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-003 Original Small Bowl photograph coming soon">
+            <span>BOS-003 · Original Small Bowl<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-003 · Original Small Bowl</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-004 Original Sphere Trio photograph coming soon">
+            <span>BOS-004 · Original Sphere Trio<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-004 · Original Sphere Trio</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-005 Sculptural Jug photograph coming soon">
+            <span>BOS-005 · Sculptural Jug<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-005 · Sculptural Jug</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-006 Wash Basin photograph coming soon">
+            <span>BOS-006 · Wash Basin<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-006 · Wash Basin</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-007 Decorative Soap and Cotton Set photograph coming soon">
+            <span>BOS-007 · Decorative Soap &amp; Cotton Set<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-007 · Decorative Soap &amp; Cotton Set</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-008 New Sphere Trio photograph coming soon">
+            <span>BOS-008 · New Sphere Trio<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-008 · New Sphere Trio</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-009 Textured Plate photograph coming soon">
+            <span>BOS-009 · Textured Plate<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-009 · Textured Plate</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-010 Fractured-Rim Bowl photograph coming soon">
+            <span>BOS-010 · Fractured-Rim Bowl<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-010 · Fractured-Rim Bowl</h3>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="BOS-011 Charred-Edge Bowl photograph coming soon">
+            <span>BOS-011 · Charred-Edge Bowl<br>Photograph coming soon</span>
+          </div>
+          <h3>BOS-011 · Charred-Edge Bowl</h3>
+        </article>
+      </div>
+    </section>
+
+    <section class="collection-section" id="curated-pairings" aria-labelledby="pairings-title">
+      <div class="section-heading">
+        <h2 id="pairings-title">Curated Pairings</h2>
+      </div>
+      <div class="gallery">
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="The Washroom Collection image coming soon">
+            <span>The Washroom Collection<br>Image coming soon</span>
+          </div>
+          <h3>The Washroom Collection</h3>
+          <p class="pairing-includes">BOS-005 · Sculptural Jug<br>BOS-006 · Wash Basin<br>BOS-007 · Decorative Soap &amp; Cotton Set</p>
+          <p class="pairing-price">$495 AUD</p>
+          <p class="coming-soon">Pairing page coming soon</p>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="Fragments of Time image coming soon">
+            <span>Fragments of Time<br>Image coming soon</span>
+          </div>
+          <h3>Fragments of Time</h3>
+          <p class="pairing-includes">BOS-009 · Textured Plate<br>BOS-010 · Fractured-Rim Bowl</p>
+          <p class="pairing-price">$385 AUD</p>
+          <p class="coming-soon">Pairing page coming soon</p>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="After the Fire image coming soon">
+            <span>After the Fire<br>Image coming soon</span>
+          </div>
+          <h3>After the Fire</h3>
+          <p class="pairing-includes">BOS-009 · Textured Plate<br>BOS-011 · Charred-Edge Bowl</p>
+          <p class="pairing-price">$410 AUD</p>
+          <p class="coming-soon">Pairing page coming soon</p>
+        </article>
+        <article class="artwork">
+          <div class="artwork-placeholder" role="img" aria-label="Collected Relics image coming soon">
+            <span>Collected Relics<br>Image coming soon</span>
+          </div>
+          <h3>Collected Relics</h3>
+          <p class="pairing-includes">BOS-005 · Sculptural Jug<br>BOS-010 · Fractured-Rim Bowl</p>
+          <p class="pairing-price">$450 AUD</p>
+          <p class="coming-soon">Pairing page coming soon</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="collection-section" id="inspiration-gallery" aria-labelledby="inspiration-title">
+      <div class="section-heading">
+        <h2 id="inspiration-title">The Art of Arrangement</h2>
+      </div>
+      <div class="collection-intro">
+        <p>Explore the possibilities of the Boston Collection through a series of thoughtfully styled sculptural arrangements.</p>
+        <p>Combining contrasting forms, weathered surfaces and complementary tones, each composition demonstrates how individual objects can come together to create something distinctive.</p>
+        <p>Some arrangements feature pieces retained in the artist's personal collection and are presented for inspiration rather than purchase.</p>
+      </div>
+      <div class="gallery inspiration-gallery">
+        <div class="artwork-placeholder" role="img" aria-label="Styled Boston Collection arrangement photograph coming soon">
+          <span>Styled arrangement photograph coming soon</span>
+        </div>
+        <div class="artwork-placeholder" role="img" aria-label="Styled Boston Collection arrangement photograph coming soon">
+          <span>Styled arrangement photograph coming soon</span>
+        </div>
+        <div class="artwork-placeholder" role="img" aria-label="Styled Boston Collection arrangement photograph coming soon">
+          <span>Styled arrangement photograph coming soon</span>
+        </div>
+        <div class="artwork-placeholder" role="img" aria-label="Styled Boston Collection arrangement photograph coming soon">
+          <span>Styled arrangement photograph coming soon</span>
+        </div>
+      </div>
+    </section>
+
+    <a class="back-link" href="sculptures-vessels.html">← Back to Sculptures &amp; Vessels</a>
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+</body>
+</html>
