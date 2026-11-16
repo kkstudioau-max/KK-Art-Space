@@ -37,6 +37,30 @@
   text-decoration: none;
 }
 
+button.artwork-enquiry {
+  font-family: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.artwork-enquiry-options:not([hidden]) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  margin: -12px 0 24px;
+}
+
+.artwork-enquiry-options a {
+  color: #252522;
+  font-size: .9rem;
+  text-underline-offset: 4px;
+}
+
+.artwork-enquiry-options a:focus-visible {
+  outline: 2px solid #716d61;
+  outline-offset: 3px;
+}
+
 .artwork-enquiry:hover {
   background: transparent;
   color: #252522;
