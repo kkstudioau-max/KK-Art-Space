@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Shadows explores the fragile boundary between perception and reality. An original artwork by KK Art Space.">
+  <title>The Shadows | KK Art Space</title>
+  <link rel="canonical" href="https://kkartspace.com.au/the-shadows.html">
+  <link rel="stylesheet" href="image-viewer.css">
+  <link rel="stylesheet" href="artwork-meta.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    a { color: inherit; }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a { color: var(--muted); font-weight: 700; text-decoration: none; }
+
+    .back-link {
+      display: inline-block;
+      margin: 30px 0 18px;
+      color: var(--muted);
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      max-height: 75vh;
+      margin: 28px 0;
+      object-fit: contain;
+    }
+
+    .description {
+      max-width: 760px;
+      margin: 32px 0 48px;
+    }
+
+    .description p { color: var(--muted); }
+
+    .additional-images {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin: 24px 0 64px;
+    }
+
+    .additional-images img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 650px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .additional-images { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home"><img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40"></a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall Art</a>
+      <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
+      <a class="about-mobile-link" href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="wall-floor-art.html">← Back to Wall Art</a>
+    <h1>The Shadows</h1>
+    <div class="artwork-materials">1016 × 762 mm (40 × 30 inches) | Black frame</div>
+
+    <div class="artwork-status" data-status="AVAILABLE">
+      <img src="KK-star-only.svg" alt="" aria-hidden="true">
+      <span>AVAILABLE</span>
+      <span class="artwork-price-separator" aria-hidden="true">|</span>
+      <span class="artwork-price">$1200 AUD</span>
+    </div>
+
+    <a class="artwork-enquiry" href="mailto:kk.artspace.au@gmail.com?subject=Enquiry%20about%20The%20Shadows">Enquire about this work</a>
+    <a class="artwork-enquiry" href="room-preview.html?artwork=the-shadows">See it in your space</a>
+
+    <img class="main-image image-viewer-trigger"
+         src="The%20Shadows/IMG_1349-1.jpg"
+         alt="The Shadows, full view">
+
+    <section class="description" aria-label="Artwork description">
+      <p>Our perception of the world is shaped not only by what exists around us, but by what we carry within.</p>
+      <p>From childhood, we develop beliefs and expectations that influence how we interpret our experiences, the intentions of others, and the world around us. Often, without conscious awareness, we seek meaning that reinforces what we already believe.</p>
+      <p><em>The Shadows</em> explores the fragile boundary between perception and reality. The three ambiguous figures resist a single interpretation. Are they threatening or protective? Are they approaching, retreating, or simply observing?</p>
+      <p>What one person perceives as something to fear, another may experience as a source of comfort.</p>
+      <p>Perhaps the shadows themselves are neither.</p>
+      <p>Perhaps it is what we bring to them that gives them meaning.</p>
+    </section>
+
+    <h2>Additional views</h2>
+    <div class="additional-images" aria-label="Additional views of The Shadows">
+      <img class="image-viewer-trigger" src="The%20Shadows/IMG_1351-2.jpg" alt="Additional view of The Shadows">
+      <img class="image-viewer-trigger" src="The%20Shadows/IMG_1353%202-3.jpg" alt="Detail view of The Shadows">
+    </div>
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="image-viewer.js"></script>
+</body>
+</html>
