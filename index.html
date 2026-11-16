@@ -312,7 +312,7 @@
     </section>
 
     <section class="featured-carousel" aria-label="Featured artworks">
-  <figure class="featured-slide">
+  <figure class="featured-slide is-active">
     <a href="can-you-really-see-me.html"><img class="image-viewer-trigger" src="Can%20You%20Really%20See%20Me/Can-you-really-see-me-1.JPEG" alt="Can You Really See Me?, full view"></a>
     <figcaption>Can You Really See Me?</figcaption>
   </figure>
@@ -364,22 +364,6 @@
     <a href="sleeping-dogs.html"><img class="image-viewer-trigger" src="Sleeping%20Dogs/Sleeping-dogs-1.jpg" alt="Sleeping Dogs, full view"></a>
     <figcaption>Sleeping Dogs</figcaption>
   </figure>
-  <figure class="featured-slide">
-  <a href="complexity.html"><img class="image-viewer-trigger" src="Complexity-1.jpg" alt="Complexity, full view"></a>
-  <figcaption>Complexity</figcaption>
-</figure>
-        <figure class="featured-slide">
-    <a href="caldera-relic.html"><img class="image-viewer-trigger" src="Caldera-relic-1.jpeg" alt="Caldera Relic, sculptural vessel"></a>
-  <figcaption>Caldera Relic</figcaption>
-</figure>
-      <figure class="featured-slide">
-  <a href="jasper-hollow.html"><img class="image-viewer-trigger" src="Jasper-1.jpeg" alt="Jasper Hollow, mixed-media sculpture"></a>
-  <figcaption>Jasper Hollow</figcaption>
-</figure>
-      <figure class="featured-slide">
-  <a href="sutured-basin.html"><img class="image-viewer-trigger" src="Sutured%20Basin/Sutured-basin-1.jpeg" alt="Sutured Basin, mixed-media vessel"></a>
-  <figcaption>Sutured Basin</figcaption>
-</figure>
       <figure class="featured-slide">
   <a href="boston-collection.html#inspiration-gallery"><img class="image-viewer-trigger" src="Boston%20Collection%20Inspiration/IMG_1364_2.jpg" alt="Original Boston table centrepiece with plate, two bowls and sphere trio, wide table view"></a>
   <figcaption>The Boston Collection — Inspiration</figcaption>
@@ -395,6 +379,18 @@
       <figure class="featured-slide">
   <a href="collected-relics-frankie.html"><img class="image-viewer-trigger" src="Boston%20Collection%20Pairings/IMG_1414-2.jpg" alt="Frankie sitting in the Fractured-Rim Bowl on the Textured Plate"></a>
   <figcaption>Collected Relics — Frankie</figcaption>
+</figure>
+        <figure class="featured-slide">
+    <a href="caldera-relic.html"><img class="image-viewer-trigger" src="Caldera-relic-1.jpeg" alt="Caldera Relic, sculptural vessel"></a>
+  <figcaption>Caldera Relic</figcaption>
+</figure>
+      <figure class="featured-slide">
+  <a href="jasper-hollow.html"><img class="image-viewer-trigger" src="Jasper-1.jpeg" alt="Jasper Hollow, mixed-media sculpture"></a>
+  <figcaption>Jasper Hollow</figcaption>
+</figure>
+      <figure class="featured-slide">
+  <a href="sutured-basin.html"><img class="image-viewer-trigger" src="Sutured%20Basin/Sutured-basin-1.jpeg" alt="Sutured Basin, mixed-media vessel"></a>
+  <figcaption>Sutured Basin</figcaption>
 </figure>
       <figure class="featured-slide">
   <a href="ash-reliquary.html"><img class="image-viewer-trigger" src="Ash-reliquary-1.jpeg" alt="Ash Reliquary, mixed-media vessel"></a>
@@ -452,6 +448,34 @@
   let activeSlide = 0;
   let isPlaying = !prefersReducedMotion;
   let timer;
+  let waitingForOpeningSlide = true;
+  let openingImageLoaded = false;
+  let openingImageVisible = false;
+  const openingImage = slides[0].querySelector("img");
+  const openingObserver = new IntersectionObserver(([entry]) => {
+    openingImageVisible = entry.isIntersecting;
+    updateOpeningTimer();
+  });
+
+  function finishOpeningSlide() {
+    waitingForOpeningSlide = false;
+    openingObserver.disconnect();
+    document.removeEventListener("visibilitychange", updateOpeningTimer);
+  }
+
+  function updateOpeningTimer() {
+    if (!waitingForOpeningSlide) return;
+    const ready = openingImageLoaded && openingImageVisible && document.visibilityState === "visible";
+    if (isPlaying && ready && !timer) {
+      timer = window.setInterval(() => {
+        finishOpeningSlide();
+        showSlide(activeSlide + 1);
+      }, 5000);
+    } else if ((!isPlaying || !ready) && timer) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  }
 
   function showSlide(index) {
     slides[activeSlide].classList.remove("is-active");
@@ -461,18 +485,23 @@
 
   function startSlideshow() {
     window.clearInterval(timer);
-    if (isPlaying) {
+    timer = null;
+    if (waitingForOpeningSlide) {
+      updateOpeningTimer();
+    } else if (isPlaying) {
       timer = window.setInterval(() => showSlide(activeSlide + 1), 5000);
     }
     pauseButton.textContent = isPlaying ? "Pause slideshow" : "Play slideshow";
   }
 
   carousel.querySelector(".carousel-previous").addEventListener("click", () => {
+    finishOpeningSlide();
     showSlide(activeSlide - 1);
     startSlideshow();
   });
 
   carousel.querySelector(".carousel-next").addEventListener("click", () => {
+    finishOpeningSlide();
     showSlide(activeSlide + 1);
     startSlideshow();
   });
@@ -482,6 +511,22 @@
     startSlideshow();
   });
 
+  openingImage.addEventListener("load", () => {
+    openingImageLoaded = true;
+    updateOpeningTimer();
+  }, { once: true });
+  openingImage.addEventListener("error", () => {
+    console.error("Could not load the opening slideshow image:", openingImage.src);
+  }, { once: true });
+  if (openingImage.complete) {
+    if (openingImage.naturalWidth > 0) {
+      openingImageLoaded = true;
+    } else {
+      console.error("Could not load the opening slideshow image:", openingImage.src);
+    }
+  }
+  openingObserver.observe(openingImage);
+  document.addEventListener("visibilitychange", updateOpeningTimer);
   startSlideshow();
 </script>
   <script src="image-viewer.js"></script>
