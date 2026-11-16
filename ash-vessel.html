@@ -8,6 +8,7 @@
   <link rel="canonical" href="https://kkartspace.com.au/ash-vessel.html">
   <link rel="stylesheet" href="image-viewer.css">
   <link rel="stylesheet" href="artwork-meta.css">
+  <link rel="stylesheet" href="curated-pairing.css">
   <style>
     :root {
       color-scheme: light;
@@ -124,22 +125,29 @@
   </header>
 
   <main>
-    <a class="back-link" href="sculptures-vessels.html">← Back to Sculptures &amp; Vessels</a>
+    <a class="back-link" href="ash-collection.html#individual-sculptures">← Back to Individual Sculptures</a>
     <h1>Ash Vessel</h1>
     <div class="artwork-materials">Mixed media, textile and paint | 140 mm diameter × 85 mm high | Original 1/1</div>
 
-    <div class="artwork-status" data-status="AVAILABLE">
+    <div class="artwork-status" data-artwork-item="ash-vessel">
       <img src="KK-star-only.svg" alt="" aria-hidden="true">
-      <span>AVAILABLE</span>
+      <span>Availability unavailable</span>
       <span class="artwork-price-separator" aria-hidden="true">|</span>
       <span class="artwork-price">$95 AUD</span>
     </div>
 
     <a class="artwork-enquiry" href="mailto:kk.artspace.au@gmail.com?subject=Enquiry%20about%20Ash%20Vessel">Enquire about this work</a>
 
-    <img class="main-image image-viewer-trigger"
+    <img class="main-image image-viewer-trigger pairing-photo"
          src="Ash%20Vessel/Ash-vessel-1.jpg"
          alt="Ash Vessel, full view">
+
+    <button class="photo-gallery-toggle" type="button" aria-expanded="false" aria-controls="photo-gallery">View Additional Photos</button>
+    <div class="photo-gallery" id="photo-gallery" aria-label="Additional photographs" hidden>
+      <button class="photo-thumbnail" type="button" aria-label="Open additional view 2 of Ash Vessel"><img class="image-viewer-trigger pairing-photo" src="Ash%20Vessel/Ash-vessel-2.jpg" alt="Additional view of Ash Vessel"></button>
+      <button class="photo-thumbnail" type="button" aria-label="Open additional view 3 of Ash Vessel"><img class="image-viewer-trigger pairing-photo" src="Ash%20Vessel/Ash-vessel-3.jpg" alt="Additional view of Ash Vessel"></button>
+      <button class="photo-thumbnail" type="button" aria-label="Open overhead view of Ash Vessel"><img class="image-viewer-trigger pairing-photo" src="Ash%20Vessel/Ash-vessel-4.jpg" alt="Overhead view of Ash Vessel"></button>
+    </div>
 
     <section class="description" aria-label="Artwork description">
       <p><em>Ash Vessel</em> explores what remains after wear, damage and time have altered the surface.</p>
@@ -147,15 +155,11 @@
       <p>Part of the <strong>Ash Collection</strong>, the work reflects an ongoing exploration of fragility, endurance and the beauty found in what survives.</p>
     </section>
 
-    <h2>Additional views</h2>
-    <div class="additional-images" aria-label="Additional views of Ash Vessel">
-      <img class="image-viewer-trigger" src="Ash%20Vessel/Ash-vessel-2.jpg" alt="Additional view of Ash Vessel">
-      <img class="image-viewer-trigger" src="Ash%20Vessel/Ash-vessel-3.jpg" alt="Additional view of Ash Vessel">
-      <img class="image-viewer-trigger" src="Ash%20Vessel/Ash-vessel-4.jpg" alt="Overhead view of Ash Vessel">
-    </div>
   </main>
 
   <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="artwork-availability.js"></script>
   <script src="image-viewer.js"></script>
+  <script src="curated-pairing.js"></script>
 </body>
 </html>

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the Ash Collection of original sculptural vessels by KK Art Space.">
+  <title>The Ash Collection | KK Art Space</title>
+  <link rel="canonical" href="https://kkartspace.com.au/ash-collection.html">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+      --accent: #716d61;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { text-decoration: none; }
+    nav a {
+      margin-left: 24px;
+      color: var(--muted);
+      font-size: .92rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    nav a:hover { color: var(--ink); }
+    .back-link {
+      display: inline-block;
+      margin-top: 30px;
+      color: var(--muted);
+      text-underline-offset: 4px;
+    }
+    .intro { max-width: 760px; padding: 48px 0; }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.7rem, 7vw, 5rem);
+      letter-spacing: -.045em;
+      line-height: 1.05;
+    }
+    .subtitle { color: var(--accent); font-size: .9rem; letter-spacing: .04em; }
+    .intro p { max-width: 700px; color: var(--muted); }
+    .collection-section { padding: 40px 0 56px; border-top: 1px solid var(--line); }
+    .section-heading { margin-bottom: 32px; }
+    h2 { margin: 0; font-size: 1.8rem; }
+    .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px 22px; }
+    .individual-card-link { display: block; text-decoration: none; }
+    .individual-card-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      object-position: center bottom;
+      background: var(--paper);
+    }
+    .individual-card-link h3 {
+      margin: 16px 0 2px;
+      font-size: clamp(1.125rem, 1.39vw, 1.25rem);
+      font-weight: 600;
+      line-height: 1.25;
+      text-align: left;
+      text-decoration: none;
+    }
+    .individual-card-link:hover h3,
+    .individual-card-link:focus-visible h3 {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+    @media (max-width: 700px) {
+      header { align-items: flex-start; }
+      nav a { margin-left: 14px; }
+      .intro { padding: 36px 0; }
+      .collection-section { padding: 32px 0 44px; }
+      .gallery { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+  <link rel="stylesheet" href="mobile.css">
+  <style>
+    @media (max-width: 700px) {
+      #individual-sculptures .gallery { row-gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home"><img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40"></a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall Art</a>
+      <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
+      <a class="about-mobile-link" href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <a class="back-link" href="sculptures-vessels.html#ash-collection">← Back to Sculptures &amp; Vessels</a>
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">The Ash Collection</h1>
+      <p class="subtitle">Sculptural vessels | Weathered forms | Original works</p>
+      <p>The Ash Collection explores weathered forms, erosion and the beauty found in imperfection. Each sculptural work reflects on fragility, resilience and what remains.</p>
+    </section>
+    <section class="collection-section" id="individual-sculptures" aria-label="Individual Sculptures">
+      <div class="gallery" data-availability-sort>
+        <article class="artwork">
+          <a class="individual-card-link" data-artwork-item="ash-reliquary" href="ash-reliquary.html">
+            <img src="Ash-reliquary-1.jpeg" alt="Ash Reliquary, mixed-media vessel">
+            <h3>Ash Reliquary</h3>
+          </a>
+        </article>
+        <article class="artwork">
+          <a class="individual-card-link" data-artwork-item="ash-basin" href="ash-basin.html">
+            <img src="Ash-basin-1.jpeg" alt="Ash Basin, mixed-media sculptural vessel">
+            <h3>Ash Basin</h3>
+          </a>
+        </article>
+        <article class="artwork">
+          <a class="individual-card-link" data-artwork-item="ash-vessel" href="ash-vessel.html">
+            <img src="Ash%20Vessel/Ash-vessel-1.jpg" alt="Ash Vessel, sculptural bowl">
+            <h3>Ash Vessel</h3>
+          </a>
+        </article>
+        <article class="artwork">
+          <a class="individual-card-link" data-artwork-item="ash-relic" href="ash-relic.html">
+            <img src="Ash%20Relic/Ash-relic-1.jpg" alt="Ash Relic, sculptural vessel">
+            <h3>Ash Relic</h3>
+          </a>
+        </article>
+        <article class="artwork">
+          <a class="individual-card-link" data-artwork-item="cinder-vessel" href="cinder-vessel.html">
+            <img src="Cinder_Vessel/Cinder-vessel-1.jpeg" alt="Cinder Vessel, sculptural vessel">
+            <h3>Cinder Vessel</h3>
+          </a>
+        </article>
+      </div>
+    </section>
+  </main>
+  <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="artwork-availability.js"></script>
+</body>
+</html>

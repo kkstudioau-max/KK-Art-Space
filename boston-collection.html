@@ -89,10 +89,6 @@
 
     .collection-note {
       max-width: 760px;
-      margin: 0 0 48px;
-      padding: 22px 0;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
       color: var(--muted);
     }
 
@@ -147,8 +143,63 @@
 
     .artwork h3 {
       margin: 12px 0 2px;
-      font-size: 1rem;
+      font-size: clamp(1.125rem, 1.39vw, 1.25rem);
       font-weight: 600;
+      line-height: 1.25;
+      text-align: left;
+    }
+
+    .pairing-card-link {
+      display: block;
+      text-decoration: none;
+    }
+
+    .pairing-card-link h3,
+    .individual-card-link h3 {
+      text-decoration: none;
+    }
+
+    .pairing-card-link:hover h3,
+    .pairing-card-link:focus-visible h3,
+    .individual-card-link:hover h3,
+    .individual-card-link:focus-visible h3 {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    #curated-pairings .pairing-card-link .artwork-photo {
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    #curated-pairings a[href="the-gathered-forms.html"] .artwork-photo {
+      object-position: 40% center;
+    }
+
+    #individual-sculptures .individual-card-link .artwork-photo {
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      object-position: center;
+      background: var(--paper);
+    }
+
+    #individual-sculptures a[href="bos-002-original-large-bowl.html"] .artwork-photo,
+    #individual-sculptures a[href="bos-003-original-small-bowl.html"] .artwork-photo,
+    #individual-sculptures a[href="bos-004-original-sphere-trio.html"] .artwork-photo,
+    #individual-sculptures a[href="bos-005-sculptural-jug.html"] .artwork-photo,
+    #individual-sculptures a[href="bos-006-wash-basin.html"] .artwork-photo,
+    #individual-sculptures a[href="bos-007-decorative-soap-cotton-set.html"] .artwork-photo,
+    #individual-sculptures a[href="bos-008-new-sphere-trio.html"] .artwork-photo,
+    #individual-sculptures a[href="bos-009-textured-plate.html"] .artwork-photo,
+    #individual-sculptures a[href="bos-010-fractured-rim-bowl.html"] .artwork-photo,
+    #individual-sculptures a[href="bos-012-frankie.html"] .artwork-photo {
+      object-fit: contain;
+    }
+
+    .individual-card-link {
+      display: block;
+      text-decoration: none;
     }
 
     .artwork p {
@@ -278,76 +329,79 @@
       <p>Discover individual sculptures, thoughtfully curated pairings and inspiration for creating your own arrangements.</p>
     </section>
 
-    <aside class="collection-note">
-      <p>Customers may purchase individual sculptures, select a curated pairing or <a href="contact.html">get in touch</a> to enquire about creating their own combination.</p>
-    </aside>
-
-    <section class="collection-section" id="individual-sculptures" aria-labelledby="individual-title">
-      <div class="section-heading">
-        <h2 id="individual-title">Individual Sculptures</h2>
-      </div>
-      <div class="gallery">
+    <section class="collection-section" id="individual-sculptures" aria-label="Individual Sculptures">
+      <div class="gallery" data-availability-sort>
         <article class="artwork">
-          <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Plate/IMG_1367_1.jpg" alt="BOS-001 Original Plate">
-          <h3>BOS-001 · Original Plate</h3>
-          <p>Not Available — Artist's Personal Collection</p>
+          <a class="individual-card-link" data-artwork-item="BOS-001" href="bos-001-original-plate.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Plate/IMG_1367_1.jpg" alt="BOS-001 Original Plate">
+            <h3>BOS-001 · Original Plate</h3>
+          </a>
         </article>
         <article class="artwork">
-          <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Large%20Bowl/IMG_1371_1.jpg" alt="BOS-002 Original Large Bowl">
-          <h3>BOS-002 · Original Large Bowl</h3>
-          <p>Not Available — Artist's Personal Collection</p>
+          <a class="individual-card-link" data-artwork-item="BOS-002" href="bos-002-original-large-bowl.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Large%20Bowl/IMG_1371_1.jpg" alt="BOS-002 Original Large Bowl">
+            <h3>BOS-002 · Original Large Bowl</h3>
+          </a>
         </article>
         <article class="artwork">
-          <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Small%20Bowl/IMG_1377_1.jpg" alt="BOS-003 Original Small Bowl">
-          <h3>BOS-003 · Original Small Bowl</h3>
-          <p>Not Available — Artist's Personal Collection</p>
+          <a class="individual-card-link" data-artwork-item="BOS-003" href="bos-003-original-small-bowl.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Small%20Bowl/IMG_1377_1.jpg" alt="BOS-003 Original Small Bowl">
+            <h3>BOS-003 · Original Small Bowl</h3>
+          </a>
         </article>
         <article class="artwork">
-          <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Balls/IMG_1374_1.jpg" alt="BOS-004 Original Sphere Trio">
-          <h3>BOS-004 · Original Sphere Trio</h3>
-          <p>Not Available — Artist's Personal Collection</p>
+          <a class="individual-card-link" data-artwork-item="BOS-004" href="bos-004-original-sphere-trio.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Balls/IMG_1374_1.jpg" alt="BOS-004 Original Sphere Trio">
+            <h3>BOS-004 · Original Sphere Trio</h3>
+          </a>
         </article>
         <article class="artwork">
-          <div class="artwork-placeholder" role="img" aria-label="BOS-005 Sculptural Jug photograph coming soon">
-            <span>BOS-005 · Sculptural Jug<br>Photograph coming soon</span>
-          </div>
-          <h3>BOS-005 · Sculptural Jug</h3>
+          <a class="individual-card-link" data-artwork-item="BOS-005" href="bos-005-sculptural-jug.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Sculptural%20Jug%20BOS-005/IMG_1388%202-1.jpg" alt="BOS-005 Sculptural Jug, a weathered sculptural jug">
+            <h3>BOS-005 · Sculptural Jug</h3>
+          </a>
         </article>
         <article class="artwork">
-          <div class="artwork-placeholder" role="img" aria-label="BOS-006 Wash Basin photograph coming soon">
-            <span>BOS-006 · Wash Basin<br>Photograph coming soon</span>
-          </div>
-          <h3>BOS-006 · Wash Basin</h3>
+          <a class="individual-card-link" data-artwork-item="BOS-006" href="bos-006-wash-basin.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Photos/Jug%20Bowl%20BOS-006/IMG_1391%202-2.jpg" alt="BOS-006 Wash Basin, angled view showing the complete basin">
+            <h3>BOS-006 · Wash Basin</h3>
+          </a>
         </article>
         <article class="artwork">
-          <div class="artwork-placeholder" role="img" aria-label="BOS-007 Decorative Soap and Cotton Set photograph coming soon">
-            <span>BOS-007 · Decorative Soap &amp; Cotton Set<br>Photograph coming soon</span>
-          </div>
-          <h3>BOS-007 · Decorative Soap &amp; Cotton Set</h3>
+          <a class="individual-card-link" data-artwork-item="BOS-007" href="bos-007-decorative-soap-cotton-set.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Photos/Soaps%20BOS-007/IMG_1387%202-1.jpg" alt="BOS-007 Decorative Soap and Cotton Set, sculptural soap and cotton holders">
+            <h3>BOS-007 · Decorative Soap &amp; Cotton Set</h3>
+          </a>
         </article>
         <article class="artwork">
-          <div class="artwork-placeholder" role="img" aria-label="BOS-008 New Sphere Trio photograph coming soon">
-            <span>BOS-008 · New Sphere Trio<br>Photograph coming soon</span>
-          </div>
-          <h3>BOS-008 · New Sphere Trio</h3>
+          <a class="individual-card-link" data-artwork-item="BOS-008" href="bos-008-new-sphere-trio.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Photos/Balls%20BOS-008/IMG_1399-1.jpg" alt="BOS-008 New Sphere Trio, three weathered sculptural spheres">
+            <h3>BOS-008 · New Sphere Trio</h3>
+          </a>
         </article>
         <article class="artwork">
-          <div class="artwork-placeholder" role="img" aria-label="BOS-009 Textured Plate photograph coming soon">
-            <span>BOS-009 · Textured Plate<br>Photograph coming soon</span>
-          </div>
-          <h3>BOS-009 · Textured Plate</h3>
+          <a class="individual-card-link" data-artwork-item="BOS-009" href="bos-009-textured-plate.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Photos/Textured%20Plate%20BOS-009/IMG_1406-1.jpg" alt="BOS-009 Textured Plate, a round plate with a weathered textured surface">
+            <h3>BOS-009 · Textured Plate</h3>
+          </a>
         </article>
         <article class="artwork">
-          <div class="artwork-placeholder" role="img" aria-label="BOS-010 Fractured-Rim Bowl photograph coming soon">
-            <span>BOS-010 · Fractured-Rim Bowl<br>Photograph coming soon</span>
-          </div>
-          <h3>BOS-010 · Fractured-Rim Bowl</h3>
+          <a class="individual-card-link" data-artwork-item="BOS-010" href="bos-010-fractured-rim-bowl.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Fractured-Rim%20Bowl/IMG_6145-1.jpeg" alt="BOS-010 Fractured-Rim Bowl, a weathered bowl with a fractured rim">
+            <h3>BOS-010 · Fractured-Rim Bowl</h3>
+          </a>
         </article>
         <article class="artwork">
-          <div class="artwork-placeholder" role="img" aria-label="BOS-011 Charred-Edge Bowl photograph coming soon">
-            <span>BOS-011 · Charred-Edge Bowl<br>Photograph coming soon</span>
-          </div>
-          <h3>BOS-011 · Charred-Edge Bowl</h3>
+          <a class="individual-card-link" data-artwork-item="BOS-011" href="bos-011-charred-edge-bowl.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Photos/Charred%20Edge%20Bowl%20BOS-011/IMG_1419-1.jpg" alt="BOS-011 Charred-Edge Bowl, a weathered bowl with a charred edge">
+            <h3>BOS-011 · Charred-Edge Bowl</h3>
+          </a>
+        </article>
+        <article class="artwork">
+          <a class="individual-card-link" data-artwork-item="BOS-012" href="bos-012-frankie.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Sculptures/Frankie/IMG_1448-1.jpg" alt="Frankie, a seated mixed-media textile sculpture with distressed fabric, visible stitching, and frayed edges">
+            <h3>BOS-012 · Frankie</h3>
+          </a>
         </article>
       </div>
     </section>
@@ -358,36 +412,40 @@
       </div>
       <div class="gallery">
         <article class="artwork">
-          <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1384%202-1.jpg" alt="The Washroom Collection pairing with a sculptural jug, wash basin, and decorative soap and cotton set">
-          <h3>The Washroom Collection</h3>
-          <p class="pairing-includes">BOS-005 · Sculptural Jug<br>BOS-006 · Wash Basin<br>BOS-007 · Decorative Soap &amp; Cotton Set</p>
-          <p class="pairing-total">Individual total: $555 AUD</p>
-          <p class="pairing-price">Pairing price: $495 AUD</p>
-          <p class="coming-soon">Pairing page coming soon</p>
+          <a class="pairing-card-link" href="the-washroom-collection.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1384%202-1.jpg" alt="The Washroom Collection pairing with a sculptural jug, wash basin, and decorative soap and cotton set">
+            <h3>The Washroom Collection</h3>
+          </a>
         </article>
         <article class="artwork">
-          <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1409-1.jpg" alt="Fragments of Time pairing with a textured plate and fractured-rim bowl">
-          <h3>Fragments of Time</h3>
-          <p class="pairing-includes">BOS-009 · Textured Plate<br>BOS-010 · Fractured-Rim Bowl</p>
-          <p class="pairing-total">Individual total: $420 AUD</p>
-          <p class="pairing-price">Pairing price: $385 AUD</p>
-          <p class="coming-soon">Pairing page coming soon</p>
+          <a class="pairing-card-link" href="fragments-of-time.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1409-1.jpg" alt="Fragments of Time pairing with a textured plate and fractured-rim bowl">
+            <h3>Fragments of Time</h3>
+          </a>
         </article>
         <article class="artwork">
-          <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1423.jpg" alt="After the Fire pairing with a textured plate and charred-edge bowl">
-          <h3>After the Fire</h3>
-          <p class="pairing-includes">BOS-009 · Textured Plate<br>BOS-011 · Charred-Edge Bowl</p>
-          <p class="pairing-total">Individual total: $450 AUD</p>
-          <p class="pairing-price">Pairing price: $410 AUD</p>
-          <p class="coming-soon">Pairing page coming soon</p>
+          <a class="pairing-card-link" href="after-the-fire.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1423.jpg" alt="After the Fire pairing with a textured plate and charred-edge bowl">
+            <h3>After the Fire</h3>
+          </a>
         </article>
         <article class="artwork">
-          <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1412.jpg" alt="Collected Relics pairing with a textured plate, fractured-rim bowl, and new sphere trio">
-          <h3>Collected Relics</h3>
-          <p class="pairing-includes">BOS-009 · Textured Plate<br>BOS-010 · Fractured-Rim Bowl<br>BOS-008 · New Sphere Trio</p>
-          <p class="pairing-total">Individual total: $470 AUD</p>
-          <p class="pairing-price">Pairing price: $420 AUD</p>
-          <p class="coming-soon">Pairing page coming soon</p>
+          <a class="pairing-card-link" href="collected-relics-sphere-trio.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1412.jpg" alt="Textured plate and fractured-rim bowl arranged with the new sphere trio">
+            <h3>Collected Relics — Sphere Trio</h3>
+          </a>
+        </article>
+        <article class="artwork">
+          <a class="pairing-card-link" href="collected-relics-frankie.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1414-2.jpg" alt="Frankie sitting in the Fractured-Rim Bowl on the Textured Plate">
+            <h3>Collected Relics — Frankie</h3>
+          </a>
+        </article>
+        <article class="artwork">
+          <a class="pairing-card-link" href="the-gathered-forms.html">
+            <img class="artwork-photo" src="Boston%20Collection%20Pairings/IMG_1415-1.jpg" alt="The Gathered Forms arrangement with a sculptural jug, textured plate, and fractured-rim bowl">
+            <h3>The Gathered Forms</h3>
+          </a>
         </article>
       </div>
     </section>
@@ -421,9 +479,14 @@
       <p class="coming-soon">Featuring BOS-001 · Original Plate, BOS-002 · Original Large Bowl, BOS-003 · Original Small Bowl and BOS-004 · Original Sphere Trio. These originals are part of the artist's personal collection and are not available for purchase.</p>
     </section>
 
+    <aside class="collection-note">
+      <p>Customers may purchase individual sculptures, select a curated pairing or <a href="contact.html">get in touch</a> to enquire about creating their own combination.</p>
+    </aside>
+
     <a class="back-link" href="sculptures-vessels.html">← Back to Sculptures &amp; Vessels</a>
   </main>
 
   <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="artwork-availability.js"></script>
 </body>
 </html>

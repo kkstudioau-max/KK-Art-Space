@@ -8,6 +8,7 @@
   <link rel="canonical" href="https://kkartspace.com.au/jasper-hollow.html">
   <link rel="stylesheet" href="image-viewer.css">
   <link rel="stylesheet" href="artwork-meta.css">
+  <link rel="stylesheet" href="curated-pairing.css">
   <style>
     :root {
       color-scheme: light;
@@ -91,6 +92,16 @@
 
     .description p { color: var(--muted); }
 
+    .photo-gallery-toggle {
+      display: block;
+      width: fit-content;
+      margin-bottom: 40px;
+    }
+
+    .photo-gallery { margin-bottom: 40px; }
+
+    .artwork-status[data-status="NOT FOR SALE"] + .artwork-enquiry { display: none; }
+
     .additional-images {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -131,22 +142,29 @@
   </header>
 
   <main>
-    <a class="back-link" href="sculptures-vessels.html">← Back to Sculptures &amp; Vessels</a>
+    <a class="back-link" href="wayward-collection.html#individual-sculptures">← Back to the Wayward Collection</a>
     <h1>Jasper Hollow</h1>
     <div class="artwork-materials">Mixed media sculpture | 390 mm (H) × 240 mm (W) × 190 mm (D) | Glass, air-dry clay, plaster, textile, hessian and fibre, leather, timber/MDF, string &amp; acrylic paint | Original 1/1</div>
 
-<div class="artwork-status" data-status="AVAILABLE">
+<div class="artwork-status" data-artwork-item="jasper-hollow">
   <img src="KK-star-only.svg" alt="" aria-hidden="true">
-  <span>AVAILABLE</span>
+  <span>Availability unavailable</span>
   <span class="artwork-price-separator" aria-hidden="true">|</span>
   <span class="artwork-price">$550 AUD</span>
 </div>
 
 <a class="artwork-enquiry" href="mailto:kk.artspace.au@gmail.com?subject=Enquiry%20about%20Jasper%20Hollow">Enquire about this work</a>
 
-<img class="main-image image-viewer-trigger"
+<img class="main-image image-viewer-trigger pairing-photo"
      src="Jasper-1.jpeg"
      alt="Jasper Hollow, full view">
+
+    <button class="photo-gallery-toggle" type="button" aria-expanded="false" aria-controls="photo-gallery">View Additional Photos</button>
+    <div class="photo-gallery" id="photo-gallery" aria-label="Additional photographs" hidden>
+      <button class="photo-thumbnail" type="button" aria-label="Open additional view 2 of Jasper Hollow"><img class="image-viewer-trigger pairing-photo" src="Jasper-2.jpeg" alt="Additional view of Jasper Hollow"></button>
+      <button class="photo-thumbnail" type="button" aria-label="Open additional view 3 of Jasper Hollow"><img class="image-viewer-trigger pairing-photo" src="Jasper-3.jpeg" alt="Additional view of Jasper Hollow"></button>
+      <button class="photo-thumbnail" type="button" aria-label="Open additional view 4 of Jasper Hollow"><img class="image-viewer-trigger pairing-photo" src="Jasper-4.jpeg" alt="Additional view of Jasper Hollow"></button>
+    </div>
 
     <section class="description" aria-label="Artwork description">
       <p>Jasper Hollow explores the experience of abandonment — of being left behind, forgotten, or feeling disconnected from those who once mattered most.</p>
@@ -154,18 +172,14 @@
       <p>Through weathered surfaces, frayed fibres and deliberately imperfect details, Jasper reflects on the quiet wounds that can remain long after others have gone — the longing to belong, the fear of being forgotten, and the small thread of hope that refuses to disappear.</p>
       <p>And beneath it all sits the question:</p>
       <p><em>Is somebody coming back?</em></p>
-      <p>Jasper Hollow is a one-of-a-kind, hand-built mixed media sculpture from the What Remains collection, continuing KK Art Space’s exploration of fragility, resilience and the traces our experiences leave behind.</p>
+      <p>Jasper Hollow is a one-of-a-kind, hand-built mixed media sculpture from the Wayward Collection. With his unconventional appearance and quietly expressive personality, Jasper celebrates the beauty of individuality while revealing the vulnerability that can exist beneath even the most playful exterior.</p>
     </section>
 
-    <h2>Additional views</h2>
-    <div class="additional-images" aria-label="Additional views of Jasper Hollow">
-      <img class="image-viewer-trigger" src="Jasper-2.jpeg" alt="Additional view of Jasper Hollow">
-      <img class="image-viewer-trigger" src="Jasper-3.jpeg" alt="Additional view of Jasper Hollow">
-      <img class="image-viewer-trigger" src="Jasper-4.jpeg" alt="Additional view of Jasper Hollow">
-    </div>
   </main>
 
   <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="artwork-availability.js"></script>
   <script src="image-viewer.js"></script>
+  <script src="curated-pairing.js"></script>
 </body>
 </html>

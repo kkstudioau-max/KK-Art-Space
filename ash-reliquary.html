@@ -8,6 +8,7 @@
   <link rel="canonical" href="https://kkartspace.com.au/ash-reliquary.html">
   <link rel="stylesheet" href="image-viewer.css">
   <link rel="stylesheet" href="artwork-meta.css">
+  <link rel="stylesheet" href="curated-pairing.css">
   <style>
     :root {
       color-scheme: light;
@@ -131,18 +132,24 @@
   </header>
 
   <main>
-    <a class="back-link" href="sculptures-vessels.html">← Back to Sculptures &amp; Vessels</a>
+    <a class="back-link" href="ash-collection.html#individual-sculptures">← Back to Individual Sculptures</a>
     <h1>Ash Reliquary</h1>
     <div class="artwork-materials">Mixed media, plaster compounds, found elements and acrylic finishes | 160 mm diameter × 200 mm high | Original 1/1</div>
 
-<div class="artwork-status" data-status="NOT FOR SALE">
+<div class="artwork-status" data-artwork-item="ash-reliquary">
   <img src="KK-star-only.svg" alt="" aria-hidden="true">
-  <span>NOT FOR SALE</span>
+  <span>Availability unavailable</span>
 </div>
 
-<img class="main-image image-viewer-trigger"
+<img class="main-image image-viewer-trigger pairing-photo"
      src="Ash-reliquary-1.jpeg"
      alt="Ash Reliquary, full view">
+
+    <button class="photo-gallery-toggle" type="button" aria-expanded="false" aria-controls="photo-gallery">View Additional Photos</button>
+    <div class="photo-gallery" id="photo-gallery" aria-label="Additional photographs" hidden>
+      <button class="photo-thumbnail" type="button" aria-label="Open close-up view of Ash Reliquary"><img class="image-viewer-trigger pairing-photo" src="Ash-reliquary-3.jpeg" alt="Close-up view of Ash Reliquary"></button>
+      <button class="photo-thumbnail" type="button" aria-label="Open Ash Reliquary with dried botanical stems"><img class="image-viewer-trigger pairing-photo" src="IMG_9570.jpeg" alt="Ash Reliquary with dried botanical stems"></button>
+    </div>
 
     <section class="description" aria-label="Artwork description">
       <p>Ash Reliquary evokes the feeling of an object unearthed and carried through time.</p>
@@ -150,14 +157,11 @@
       <p>Hand-formed and impossible to replicate, Ash Reliquary exists as a true 1/1 original. Like a traditional reliquary — a vessel made to hold something of significance — it speaks to what we preserve, what remains, and the marks left behind.</p>
     </section>
 
-    <h2>Additional views</h2>
-    <div class="additional-images" aria-label="Additional views of Ash Reliquary">
-      <img class="image-viewer-trigger" src="Ash-reliquary-3.jpeg" alt="Close-up view of Ash Reliquary">
-      <img class="image-viewer-trigger" src="IMG_9570.jpeg" alt="Ash Reliquary with dried botanical stems">
-    </div>
   </main>
 
   <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="artwork-availability.js"></script>
   <script src="image-viewer.js"></script>
+  <script src="curated-pairing.js"></script>
 </body>
 </html>

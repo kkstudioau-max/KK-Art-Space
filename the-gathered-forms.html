@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The Gathered Forms, a curated Boston Collection pairing of three weathered sculptural forms by KK Art Space.">
+  <title>The Gathered Forms | KK Art Space</title>
+  <link rel="canonical" href="https://kkartspace.com.au/the-gathered-forms.html">
+  <link rel="stylesheet" href="image-viewer.css">
+  <link rel="stylesheet" href="artwork-meta.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    a { color: inherit; }
+
+    .brand {
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 30px 0 18px;
+      color: var(--muted);
+      text-underline-offset: 4px;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: var(--muted);
+      font-size: .9rem;
+      letter-spacing: .04em;
+    }
+
+    .artwork-status {
+      margin-top: 20px;
+    }
+
+    .artwork-enquiry {
+      margin-bottom: 12px;
+    }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      max-height: 75vh;
+      margin: 16px 0 14px;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    .photo-gallery-toggle {
+      display: inline-block;
+      min-height: 44px;
+      margin: 0 0 48px;
+      padding: 9px 14px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .photo-gallery-toggle:hover {
+      background: var(--ink);
+      color: white;
+    }
+
+    .photo-gallery-toggle:focus-visible,
+    .photo-thumbnail:focus-visible,
+    .image-viewer-control:focus-visible {
+      outline: 2px solid #716d61;
+      outline-offset: 3px;
+    }
+
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 220px));
+      gap: 14px;
+      margin: -30px 0 48px;
+    }
+
+    .photo-gallery[hidden] {
+      display: none;
+    }
+
+    .photo-thumbnail {
+      display: block;
+      width: 100%;
+      height: 190px;
+      padding: 0;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #eeece6;
+      cursor: zoom-in;
+      touch-action: manipulation;
+    }
+
+    .photo-thumbnail img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .description {
+      max-width: 760px;
+      margin: 0 0 42px;
+    }
+
+    .description p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .pairing-details {
+      max-width: 760px;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 1.8rem;
+    }
+
+    .sculpture-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sculpture-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .sculpture-list li span:last-child {
+      white-space: nowrap;
+    }
+
+    .individual-total {
+      margin: 18px 0 0;
+      color: var(--muted);
+    }
+
+    .pairing-price {
+      margin: 4px 0 0;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .availability-note {
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .pairing-note {
+      max-width: 760px;
+      margin: 28px 0 42px;
+      color: var(--muted);
+    }
+
+    .image-viewer {
+      overflow: auto;
+      touch-action: pan-x pan-y;
+    }
+
+    .image-viewer .image-viewer-photo {
+      transition: transform .18s ease;
+      transform-origin: center;
+    }
+
+    .image-viewer .image-viewer-photo.is-zoomed {
+      cursor: zoom-out;
+    }
+
+    .image-viewer-control {
+      position: absolute;
+      z-index: 1;
+      display: grid;
+      min-width: 44px;
+      min-height: 44px;
+      place-items: center;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, .7);
+      border-radius: 8px;
+      background: rgba(20, 20, 20, .75);
+      color: white;
+      font: inherit;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    .image-viewer-previous { left: 12px; top: 50%; transform: translateY(-50%); }
+    .image-viewer-next { right: 12px; top: 50%; transform: translateY(-50%); }
+    .image-viewer-zoom-out { left: 12px; bottom: 12px; }
+    .image-viewer-zoom-in { left: 66px; bottom: 12px; }
+    .image-viewer-zoom-reset { left: 120px; bottom: 12px; }
+    .image-viewer-count {
+      position: absolute;
+      right: 68px;
+      bottom: 22px;
+      color: white;
+      font-size: .9rem;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 700px) {
+      .back-link { margin-top: 22px; }
+      .main-image { max-height: 62vh; max-height: 62svh; }
+      .sculpture-list li { gap: 12px; }
+      .photo-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .photo-thumbnail { height: 150px; }
+      .image-viewer { padding: 58px 12px; }
+      .image-viewer-previous { left: 8px; }
+      .image-viewer-next { right: 8px; }
+      .image-viewer-close { top: 8px; right: 8px; }
+      .image-viewer-zoom-out { left: 8px; bottom: 8px; }
+      .image-viewer-zoom-in { left: 62px; bottom: 8px; }
+      .image-viewer-zoom-reset { left: 116px; bottom: 8px; }
+      .image-viewer-count { right: 12px; bottom: 22px; }
+    }
+  </style>
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home"><img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40"></a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall Art</a>
+      <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
+      <a class="about-mobile-link" href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="boston-collection.html#curated-pairings">← Back to Curated Pairings</a>
+    <h1>The Gathered Forms</h1>
+    <p class="subtitle">The Boston Collection · Curated pairing</p>
+
+    <div class="artwork-status" data-status="AVAILABLE">
+      <img src="KK-star-only.svg" alt="" aria-hidden="true">
+      <span>AVAILABLE</span>
+    </div>
+
+    <a class="artwork-enquiry" href="mailto:kk.artspace.au@gmail.com?subject=Enquiry%20about%20The%20Gathered%20Forms">Enquire about this pairing</a>
+
+    <img class="main-image image-viewer-trigger pairing-photo"
+         src="Boston%20Collection%20Pairings/IMG_1415-1.jpg"
+         alt="The Gathered Forms: a sculptural jug, fractured-rim bowl and textured plate arranged together">
+    <button class="photo-gallery-toggle" type="button" aria-expanded="false" aria-controls="photo-gallery">View Additional Photos</button>
+    <div class="photo-gallery" id="photo-gallery" aria-label="Additional photographs" hidden>
+      <button class="photo-thumbnail" type="button" aria-label="Open additional view of The Gathered Forms">
+        <img class="image-viewer-trigger pairing-photo"
+             src="Boston%20Collection%20Pairings/IMG_1417-2.jpg"
+             alt="Additional view of The Gathered Forms">
+      </button>
+    </div>
+
+    <section class="description" aria-label="Pairing description">
+      <p>Three distinct sculptural forms brought together through their shared weathered surfaces and understated palette. The height of the jug contrasts with the fractured bowl and textured plate, creating a balanced arrangement that celebrates material, form and imperfection.</p>
+    </section>
+
+    <section class="pairing-details" aria-labelledby="included-title">
+      <h2 id="included-title">Included sculptures</h2>
+      <ul class="sculpture-list">
+        <li><span>BOS-005 — Sculptural Jug</span><span>$295 AUD</span></li>
+        <li><span>BOS-009 — Textured Plate</span><span>$120 AUD</span></li>
+        <li><span>BOS-010 — Fractured-Rim Bowl</span><span>$150 AUD</span></li>
+      </ul>
+      <p class="individual-total">Individual total: $565 AUD</p>
+      <p class="pairing-price">Curated pairing price: $505 AUD</p>
+      <p class="availability-note">Available, subject to the availability of all three individual sculptures.</p>
+    </section>
+
+    <a class="artwork-enquiry" href="mailto:kk.artspace.au@gmail.com?subject=Enquiry%20about%20The%20Gathered%20Forms">Enquire about this pairing</a>
+
+    <p class="pairing-note"><em>Each sculpture is also available individually. Curated pairings offer a suggested arrangement at a reduced combined price. Pieces may also be mixed and matched.</em></p>
+
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="image-viewer.js"></script>
+  <script>
+    const galleryToggle = document.querySelector(".photo-gallery-toggle");
+    const photoGallery = document.querySelector("#photo-gallery");
+    const photos = Array.from(document.querySelectorAll(".pairing-photo"));
+    let activePhotoIndex = 0;
+    let zoomLevel = 1;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    galleryToggle.addEventListener("click", () => {
+      const isExpanded = galleryToggle.getAttribute("aria-expanded") === "true";
+      galleryToggle.setAttribute("aria-expanded", String(!isExpanded));
+      galleryToggle.textContent = isExpanded ? "View Additional Photos" : "Hide Additional Photos";
+      photoGallery.hidden = isExpanded;
+    });
+
+    function updateLightbox() {
+      const photo = photos[activePhotoIndex];
+      const viewer = document.querySelector(".image-viewer");
+      const fullSizeImage = viewer.querySelector(".image-viewer-photo");
+      fullSizeImage.src = photo.currentSrc || photo.src;
+      fullSizeImage.alt = photo.alt;
+      fullSizeImage.style.transform = "scale(1)";
+      fullSizeImage.classList.remove("is-zoomed");
+      zoomLevel = 1;
+      viewer.querySelector(".image-viewer-count").textContent = `${activePhotoIndex + 1} / ${photos.length}`;
+    }
+
+    function showPhoto(index) {
+      activePhotoIndex = (index + photos.length) % photos.length;
+      updateLightbox();
+    }
+
+    function openLightbox(index) {
+      let viewer = document.querySelector(".image-viewer");
+      if (!viewer) {
+        viewer = document.createElement("dialog");
+        viewer.className = "image-viewer";
+        viewer.setAttribute("aria-label", "Full-size pairing photographs");
+
+        const fullSizeImage = document.createElement("img");
+        fullSizeImage.className = "image-viewer-photo";
+
+        const makeButton = (className, label, text, action) => {
+          const button = document.createElement("button");
+          button.className = `image-viewer-control ${className}`;
+          button.type = "button";
+          button.setAttribute("aria-label", label);
+          button.textContent = text;
+          button.addEventListener("click", action);
+          return button;
+        };
+
+        const closeButton = document.createElement("button");
+        closeButton.className = "image-viewer-close";
+        closeButton.type = "button";
+        closeButton.textContent = "×";
+        closeButton.setAttribute("aria-label", "Close full-size image");
+        closeButton.addEventListener("click", () => viewer.close());
+
+        const count = document.createElement("span");
+        count.className = "image-viewer-count";
+        count.setAttribute("aria-live", "polite");
+
+        viewer.append(
+          fullSizeImage,
+          makeButton("image-viewer-previous", "Previous photograph", "‹", () => showPhoto(activePhotoIndex - 1)),
+          makeButton("image-viewer-next", "Next photograph", "›", () => showPhoto(activePhotoIndex + 1)),
+          makeButton("image-viewer-zoom-out", "Zoom out", "−", () => setZoom(zoomLevel - 0.25)),
+          makeButton("image-viewer-zoom-in", "Zoom in", "+", () => setZoom(zoomLevel + 0.25)),
+          makeButton("image-viewer-zoom-reset", "Reset zoom", "Reset", () => setZoom(1)),
+          count,
+          closeButton
+        );
+
+        fullSizeImage.addEventListener("click", () => setZoom(zoomLevel === 1 ? 1.5 : 1));
+        viewer.addEventListener("click", (event) => {
+          if (event.target === viewer) viewer.close();
+        });
+        viewer.addEventListener("keydown", (event) => {
+          if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            showPhoto(activePhotoIndex - 1);
+          } else if (event.key === "ArrowRight") {
+            event.preventDefault();
+            showPhoto(activePhotoIndex + 1);
+          }
+        });
+        fullSizeImage.addEventListener("touchstart", (event) => {
+          touchStartX = event.changedTouches[0].clientX;
+          touchStartY = event.changedTouches[0].clientY;
+        }, { passive: true });
+        fullSizeImage.addEventListener("touchend", (event) => {
+          if (zoomLevel > 1) return;
+          const deltaX = event.changedTouches[0].clientX - touchStartX;
+          const deltaY = event.changedTouches[0].clientY - touchStartY;
+          if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+            showPhoto(activePhotoIndex + (deltaX < 0 ? 1 : -1));
+          }
+        }, { passive: true });
+
+        document.body.append(viewer);
+      }
+
+      showPhoto(index);
+      viewer.showModal();
+    }
+
+    function setZoom(level) {
+      zoomLevel = Math.min(3, Math.max(1, level));
+      const image = document.querySelector(".image-viewer-photo");
+      image.style.transform = `scale(${zoomLevel})`;
+      image.classList.toggle("is-zoomed", zoomLevel > 1);
+    }
+
+    document.addEventListener("click", (event) => {
+      const photo = event.target.closest?.(".pairing-photo");
+      if (!photo) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      openLightbox(photos.indexOf(photo));
+    }, true);
+  </script>
+</body>
+</html>
