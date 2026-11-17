@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Hemmed In, an original artwork by KK Art Space.">
+  <title>Hemmed In | KK Art Space</title>
+  <link rel="canonical" href="https://kkartspace.com.au/hemmed-in.html">
+  <link rel="stylesheet" href="image-viewer.css">
+  <link rel="stylesheet" href="artwork-meta.css">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f8f7f4;
+      --ink: #252522;
+      --muted: #6d6b65;
+      --line: #dedcd5;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+    }
+
+    header, main, footer {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    a { color: inherit; }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a { color: var(--muted); font-weight: 700; text-decoration: none; }
+
+    .back-link {
+      display: inline-block;
+      margin: 30px 0 18px;
+      color: var(--muted);
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.1;
+    }
+
+    .main-image {
+      display: block;
+      width: 100%;
+      max-height: 75vh;
+      margin: 28px 0;
+      object-fit: contain;
+    }
+
+    .description {
+      max-width: 760px;
+      margin: 32px 0 48px;
+    }
+
+    .description p { color: var(--muted); }
+
+    .additional-images {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 24px 0 64px;
+    }
+
+    .additional-images img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: .85rem;
+    }
+
+    @media (max-width: 650px) {
+      header { align-items: flex-start; flex-direction: column; }
+      .additional-images { grid-template-columns: 1fr; }
+    }
+  </style>
+  <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+  <header>
+    <a class="brand" href="index.html#home"><img src="KK-logo-text.svg" alt="KK Art Space" width="156" height="40"></a>
+    <nav aria-label="Main navigation">
+      <a href="wall-floor-art.html">Wall Art</a>
+      <a href="sculptures-vessels.html">Sculptures &amp; Vessels</a>
+      <a class="about-mobile-link" href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <a class="back-link" href="wall-floor-art.html">← Back to Wall Art</a>
+    <h1>Hemmed In</h1>
+    <div class="artwork-materials">1050 × 780 mm | Black frame</div>
+
+    <div class="artwork-status" data-status="AVAILABLE">
+      <img src="KK-star-only.svg" alt="" aria-hidden="true">
+      <span>AVAILABLE</span>
+      <span class="artwork-price-separator" aria-hidden="true">|</span>
+      <span class="artwork-price">$1200 AUD</span>
+    </div>
+
+    <a class="artwork-enquiry" href="mailto:kk.artspace.au@gmail.com?subject=Enquiry%20about%20Hemmed%20In">Enquire about this work</a>
+
+    <img class="main-image image-viewer-trigger"
+         src="Hemmed%20In/IMG_1502-1.jpg"
+         alt="Hemmed In, full view">
+
+    <section class="description" aria-label="Artwork description">
+      <p>There are times in life when the circumstances surrounding us begin to feel like walls. Shaped by external pressures, relationships, expectations and our own experiences, these boundaries can gradually restrict our sense of freedom and possibility.</p>
+      <p>Yet confinement is rarely straightforward. Even circumstances that cause distress can offer a sense of familiarity, safety and predictability. What holds us back can also be what we are most reluctant to leave behind.</p>
+      <p>Through layered textures, weathered surfaces and a restrained palette of storm blues and charcoal, <em>Hemmed In</em> explores this tension between restriction and security.</p>
+      <p>The central space is enclosed, yet its boundaries are neither complete nor impenetrable. Areas of openness suggest the possibility of change, while acknowledging that recognising a way forward and being able to take it are not always the same.</p>
+      <p><em>Hemmed In</em> is a reflection on the complexities of feeling trapped, the comfort we sometimes find in familiarity, and the possibility of moving beyond the boundaries that contain us.</p>
+    </section>
+
+    <h2>Additional views</h2>
+    <div class="additional-images" aria-label="Additional views of Hemmed In">
+      <img class="image-viewer-trigger" src="Hemmed%20In/IMG_1504-5.jpg" alt="Hemmed In displayed in a room">
+      <img class="image-viewer-trigger" src="Hemmed%20In/IMG_1511-2.jpg" alt="Detail view of Hemmed In">
+      <img class="image-viewer-trigger" src="Hemmed%20In/IMG_1512-3.jpg" alt="Additional detail of Hemmed In">
+      <img class="image-viewer-trigger" src="Hemmed%20In/IMG_1519-4.jpg" alt="Additional view of Hemmed In">
+    </div>
+  </main>
+
+  <footer>© 2026 KK Art Space · Australia</footer>
+  <script src="image-viewer.js"></script>
+  <script src="artwork-enquiry.js"></script>
+</body>
+</html>
