@@ -20,6 +20,7 @@
     "jasper-hollow": { status: "AVAILABLE" },
     "frankie": { status: "AVAILABLE" },
     "pork-chop": { status: "AVAILABLE" },
+    "tom": { status: "AVAILABLE" },
     "at-what-cost": { status: "AVAILABLE" },
     "enough": { status: "AVAILABLE" },
     "caldera-relic": { status: "AVAILABLE" },
