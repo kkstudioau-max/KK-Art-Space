@@ -19,6 +19,7 @@
     "ash-relic": { status: "AVAILABLE" },
     "cinder-vessel": { status: "AVAILABLE" },
     "jasper-hollow": { status: "AVAILABLE" },
+    "pork-chop": { status: "AVAILABLE" },
     "at-what-cost": { status: "AVAILABLE" },
     "enough": { status: "AVAILABLE" },
     "caldera-relic": { status: "AVAILABLE" },
